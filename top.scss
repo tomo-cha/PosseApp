@@ -98,9 +98,10 @@
         column-count: 2;
         flex-direction: row;
         justify-content: space-between;
+        margin: 20px 0px;
         // 左の円グラフ
         .circle_graph1{
-            width: 45%;
+            width: calc((100% - 20px)/2);
             background-color: #ffffff;
             border-radius: 10px;
             .item_title{
@@ -164,7 +165,7 @@
         }
         // 右の円グラフ
         .circle_graph2{
-            width: 45%;
+            width: calc((100% - 20px)/2);
             background-color: #ffffff;
             border-radius: 10px;
             .item_title{
