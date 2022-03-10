@@ -45,7 +45,7 @@
     width: 100%;
     // 左側のかたまり
     .column1{
-        width: 50%;
+        width: 45%;
         margin-left: 40px;
         // 横並び３つのやつ
         .wrapper1{
@@ -91,7 +91,7 @@
     }
     // 右側のかたまり。縦に２つに分ける
     .column2{
-        width: 50%;
+        width: 45%;
         display: flex;
         flex-wrap: wrap;
         column-gap: 20px;
@@ -100,27 +100,107 @@
         justify-content: space-between;
         // 左の円グラフ
         .circle_graph1{
-            width: 100%;
+            width: 45%;
+            background-color: #ffffff;
+            border-radius: 10px;
             .item_title{
                 color: #111111;
-                font-size: 26px;
+                font-size: 20px;
                 font-weight: bold;
-
+                margin: 20px;
             }
             .item_graph{
-                width: calc((100% - 20px)/2);
+                width: calc((100% - 20px));
+                margin-bottom: 20px;
+            }
+            .lang{
+                display: flex;
+                flex-wrap: wrap;
+                flex-direction: row;
+                color: #111111;
+                font-size: 12px;
+                line-height: 3;
+                .lang_item::before{
+                    content: "・";
+                    width: 12px;
+                    height: 12px;
+                    border-radius: 12px;
+                    margin-left: 10px;
+                    margin-right: 2px;
+                }
+                .lang_js::before{
+                    background-color: #1754ef;
+                    color: #1754ef;
+                }
+                .lang_css::before{
+                    background-color: #0f71bd;
+                    color: #0f71bd;
+                }
+                .lang_php::before{
+                    background-color: #20bdde;
+                    color: #20bdde;
+                }
+                .lang_html::before{
+                    background-color: #3ccefe;
+                    color: #3ccefe;
+                }
+                .lang_lara::before{
+                    background-color: #b29ef3;
+                    color: #b29ef3;
+                }
+                .lang_sql::before{
+                    background-color: #6d46ec;
+                    color: #6d46ec;
+                }
+                .lang_shell::before{
+                    background-color: #4a17ef;
+                    color: #4a17ef;
+                }
+                .lang_others::before{
+                    background-color: #3105c0;
+                    color: #3105c0;
+                }
             }
         }
         // 右の円グラフ
         .circle_graph2{
-            width: 100%;
+            width: 45%;
+            background-color: #ffffff;
+            border-radius: 10px;
             .item_title{
                 color: #111111;
-                font-size: 26px;
+                font-size: 20px;
                 font-weight: bold;
+                margin: 20px;
             }
             .item_graph{
-                width: calc((100% - 20px)/2);
+                width: calc((100% - 20px));
+                margin-bottom: 20px;
+            }
+            .contents{
+                color: #111111;
+                font-size: 12px;
+                line-height: 3;
+                .content::before{
+                    content: "・";
+                    width: 12px;
+                    height: 12px;
+                    border-radius: 12px;
+                    margin-left: 10px;
+                    margin-right: 2px;
+                }
+                .content_dot::before{
+                    background-color: #1754ef;
+                    color: #1754ef;
+                }
+                .content_nyobi::before{
+                    background-color: #0f71bd;
+                    color: #0f71bd;
+                }
+                .content_posse::before{
+                    background-color: #20bdde;
+                    color: #20bdde;
+                }
             }
         }
     }
