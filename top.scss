@@ -1,41 +1,130 @@
-
-
-
+@media screen and (min-width: 767px) {
+// ヘッダー
+.header{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 64px;
+    // posseロゴ
+    .header_img{
+        width: 200px;
+        height: 54px;
+        margin-left: 40px;
+        object-fit: cover;
+    }
+    // 4th week
+    .header_text{
+        font-size: 13px;
+        color: #bcd2e1;
+        margin-left: 20px;
+    }
+    // 記録・投稿
+    .header_button{
+        width: 250px;
+        height: 44px;
+        text-align: center;
+        border-radius: 27px;
+        background: linear-gradient(to right, #0f72bd, #3ccefe);
+        color: #ffffff;
+        margin: 0 40px 0 auto;
+    }
+}
 
 
 
 
 // main
+// メイン全体。カラムを縦に２つに分ける
 .container{
     display: flex;
     flex-wrap: wrap;
     column-gap: 20px;
     column-count: 2;
     flex-direction: row;
-    .columun1{
+    background-color: #f5f5f8;
+    width: 100%;
+    // 左側のかたまり
+    .column1{
+        width: 50%;
+        margin-left: 40px;
+        // 横並び３つのやつ
         .wrapper1{
+            width: 100%;
             display: flex;
             flex-wrap: wrap;
             flex-direction: row;
             justify-content: space-between;
             .item_contents{
+                width: calc((100% - 40px)/3);
+                margin: 20px 0px;
+                background-color: white;
+                border-radius: 10px;
+                text-align: center;
+                // justify-content: space-between;
+                .item_label{
+                    color: #217bc0;
+                    font-size: 16px;
+                    font-weight: bold;
+                    line-height: 3;
+                }
+                .item_number{
+                    color: #111111;
+                    font-size: 32px;
+                    font-weight: bold;
+                }
+                .item_hour{
+                    color: #99bad2;
+                    font-size: 16px;
+                    font-weight: bold;
+                    line-height: 3;
+                }
             }
         }
+        // 下の棒グラフ
         .wrapper2{
-            
+            .bar_graph{
+                width: 100%;
+                border-radius: 10px;
+                margin-bottom: 20px;
+            }
         }
     }
+    // 右側のかたまり。縦に２つに分ける
     .column2{
+        width: 50%;
         display: flex;
         flex-wrap: wrap;
         column-gap: 20px;
         column-count: 2;
         flex-direction: row;
+        justify-content: space-between;
+        // 左の円グラフ
         .circle_graph1{
+            width: 100%;
+            .item_title{
+                color: #111111;
+                font-size: 26px;
+                font-weight: bold;
 
+            }
+            .item_graph{
+                width: calc((100% - 20px)/2);
+            }
         }
+        // 右の円グラフ
         .circle_graph2{
-
+            width: 100%;
+            .item_title{
+                color: #111111;
+                font-size: 26px;
+                font-weight: bold;
+            }
+            .item_graph{
+                width: calc((100% - 20px)/2);
+            }
         }
     }
+}
+
+
 }
