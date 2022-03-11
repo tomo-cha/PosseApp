@@ -1,9 +1,5 @@
 @charset "UTF-8";
 @media screen and (min-width: 767px) {
-  * {
-    background-color: #f5f5f8;
-  }
-
   .header {
     display: flex;
     align-items: center;
@@ -22,6 +18,7 @@
     font-size: 13px;
     color: #bcd2e1;
     margin-left: 20px;
+    background-color: #ffffff;
   }
   .header .header_button {
     width: 250px;
@@ -31,6 +28,10 @@
     background: linear-gradient(to right, #0f72bd, #3ccefe);
     color: #ffffff;
     margin: 0 40px 0 auto;
+    box-shadow: 0 3px 10px #3ccefe;
+  }
+  .header .header_button:hover {
+    opacity: 0.8;
   }
 
   .container {
@@ -57,16 +58,16 @@
   .container .column1 .wrapper1 .item_contents {
     width: calc((100% - 40px) / 3);
     margin: 20px 0px;
-    box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
     text-align: center;
-    background-color: #ffffff;
+    border-radius: 20px 20px 20px 20px;
   }
   .container .column1 .wrapper1 .item_contents .item_label {
     color: #217bc0;
     font-size: 16px;
     font-weight: bold;
     line-height: 3;
-    border-radius: 20px 10px 0px 0px;
+    border-radius: 10px 10px 0px 0px;
     background-color: #ffffff;
   }
   .container .column1 .wrapper1 .item_contents .item_number {
@@ -81,12 +82,14 @@
     font-weight: bold;
     line-height: 3;
     background-color: #ffffff;
+    border-radius: 0px 0px 10px 10px;
   }
   .container .column1 .wrapper2 .bar_graph {
     width: 100%;
     border-radius: 10px;
     margin-bottom: 20px;
     background-color: #ffffff;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
   }
   .container .column2 {
     width: 45%;
@@ -104,12 +107,14 @@
     width: calc((100% - 20px) / 2);
     background-color: #ffffff;
     border-radius: 10px;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
   }
   .container .column2 .circle_graph1 .item_title {
     color: #111111;
     font-size: 20px;
     font-weight: bold;
     margin: 20px;
+    background-color: #ffffff;
   }
   .container .column2 .circle_graph1 .item_graph {
     width: calc(100% - 20px);
@@ -122,6 +127,10 @@
     color: #111111;
     font-size: 12px;
     line-height: 3;
+    background-color: #ffffff;
+  }
+  .container .column2 .circle_graph1 .lang .lang_item {
+    background-color: #ffffff;
   }
   .container .column2 .circle_graph1 .lang .lang_item::before {
     content: "・";
@@ -167,12 +176,14 @@
     width: calc((100% - 20px) / 2);
     background-color: #ffffff;
     border-radius: 10px;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
   }
   .container .column2 .circle_graph2 .item_title {
     color: #111111;
     font-size: 20px;
     font-weight: bold;
     margin: 20px;
+    background-color: #ffffff;
   }
   .container .column2 .circle_graph2 .item_graph {
     width: calc(100% - 20px);
@@ -182,6 +193,10 @@
     color: #111111;
     font-size: 12px;
     line-height: 3;
+    background-color: #ffffff;
+  }
+  .container .column2 .circle_graph2 .contents .content {
+    background-color: #ffffff;
   }
   .container .column2 .circle_graph2 .contents .content::before {
     content: "・";
@@ -202,6 +217,223 @@
   .container .column2 .circle_graph2 .contents .content_posse::before {
     background-color: #20bdde;
     color: #20bdde;
+  }
+
+  .overlay {
+    /* 位置を固定 */
+    position: fixed;
+    top: 0;
+    left: 0;
+    /* 画面いっぱいに広がるようにする */
+    width: 100%;
+    height: 100vh;
+    /* rgbaを使って60%の黒いオーバーレイにする */
+    background: rgba(0, 0, 0, 0.6);
+    /* デフォルトでは見えないようにする */
+    /* 表示する際の変化の所要時間 */
+    transition: 0.3s;
+  }
+  .overlay.active {
+    /* activeクラスがついたときにオーバーレイを表示する */
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .modal {
+    width: 900px;
+    padding: 56px 56px 56px 56px;
+    background-color: #ffffff;
+    /* 位置の調整(真ん中に表示) */
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    /* デフォルトでは非表示にしておく */
+    /* 表示の変化にかかる時間 */
+    transition: 0.3s;
+    display: flex;
+    flex-wrap: wrap;
+    -moz-column-gap: 40px;
+         column-gap: 40px;
+    -moz-column-count: 2;
+         column-count: 2;
+    flex-direction: row;
+    border-radius: 20px;
+  }
+  .modal.active {
+    opacity: 1;
+    visibility: visible;
+  }
+  .modal .close {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    cursor: pointer;
+    font-size: 20px;
+  }
+  .modal .modal_column1 {
+    width: 374px;
+  }
+  .modal .modal_column1 .wrapper_date .date_text {
+    font-size: 13px;
+    font-weight: bold;
+  }
+  .modal .modal_column1 .wrapper_date .date_calender {
+    width: 374px;
+    height: 56px;
+    border-radius: 10px;
+    background-color: #f5f5f8;
+    display: flex;
+    margin: 5px 0px 15px 0px;
+    padding-left: 20px;
+    align-items: center;
+  }
+  .modal .modal_column1 .wrapper_contents .contents_text {
+    font-size: 13px;
+    font-weight: bold;
+  }
+  .modal .modal_column1 .wrapper_contents .contents {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    margin: 5px 0px 15px 0px;
+  }
+  .modal .modal_column1 .wrapper_contents .contents .content_item {
+    font-size: 13px;
+    background-color: #f5f5f8;
+    border-radius: 13px;
+    padding: 5px;
+    margin-right: 10px;
+    margin-bottom: 5px;
+    position: relative;
+  }
+  .modal .modal_column1 .wrapper_contents .contents .content_item::before {
+    content: "・";
+    font-size: 16px;
+    background-color: #cccccc;
+    color: #cccccc;
+    border-radius: 16px;
+  }
+  .modal .modal_column1 .wrapper_contents .contents .content_item::after {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 11px;
+    left: 8px;
+    width: 10px;
+    height: 5px;
+    border-left: 2px solid #ffffff;
+    border-bottom: 2px solid #ffffff;
+    transform: rotate(-45deg);
+  }
+  .modal .modal_column1 .wrapper_langs .langs_text {
+    font-size: 13px;
+    font-weight: bold;
+  }
+  .modal .modal_column1 .wrapper_langs .langs_list {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    margin: 5px 0px 15px 0px;
+  }
+  .modal .modal_column1 .wrapper_langs .langs_list .lang_item {
+    font-size: 13px;
+    background-color: #f5f5f8;
+    border-radius: 13px;
+    margin-right: 10px;
+    padding: 5px;
+    margin-bottom: 5px;
+    position: relative;
+  }
+  .modal .modal_column1 .wrapper_langs .langs_list .lang_item::before {
+    content: "・";
+    font-size: 16px;
+    background-color: #cccccc;
+    color: #cccccc;
+    border-radius: 16px;
+  }
+  .modal .modal_column1 .wrapper_langs .langs_list .lang_item::after {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 11px;
+    left: 8px;
+    width: 10px;
+    height: 5px;
+    border-left: 2px solid #ffffff;
+    border-bottom: 2px solid #ffffff;
+    transform: rotate(-45deg);
+  }
+  .modal .modal_column2 {
+    width: 374px;
+  }
+  .modal .modal_column2 .wrapper_time .time_text {
+    font-size: 13px;
+    font-weight: bold;
+  }
+  .modal .modal_column2 .wrapper_time .time_textarea {
+    width: 374px;
+    height: 56px;
+    border-radius: 10px;
+    background-color: #f5f5f8;
+    margin: 5px 0px 15px 0px;
+    padding-left: 20px;
+    align-items: center;
+  }
+  .modal .modal_column2 .wrapper_twitter .twitter_text {
+    font-size: 13px;
+    font-weight: bold;
+  }
+  .modal .modal_column2 .wrapper_twitter .twitter_textarea {
+    width: 374px;
+    height: 125px;
+    resize: none;
+    border-radius: 10px;
+    background-color: #f5f5f8;
+    margin: 5px 0px 15px 0px;
+    padding: 13px;
+  }
+  .modal .modal_column2 .twitter_check {
+    font-size: 13px;
+    position: relative;
+    margin: 5px 0px 15px 0px;
+  }
+  .modal .modal_column2 .twitter_check::before {
+    content: "・";
+    font-size: 19px;
+    background-color: #0f71bd;
+    color: #0f71bd;
+    border-radius: 19px;
+  }
+  .modal .modal_column2 .twitter_check::after {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 7px;
+    left: 5px;
+    width: 10px;
+    height: 5px;
+    border-left: 2px solid #ffffff;
+    border-bottom: 2px solid #ffffff;
+    transform: rotate(-45deg);
+  }
+  .modal .header_button {
+    width: 250px;
+    height: 44px;
+    text-align: center;
+    border-radius: 27px;
+    background: linear-gradient(to right, #0f72bd, #3ccefe);
+    color: #ffffff;
+    box-shadow: 0 3px 10px #3ccefe;
+    margin-left: 269px;
+  }
+  .modal .header_button:hover {
+    opacity: 0.8;
+  }
+
+  /* スクロールできる高さを出すための設定 */
+  section {
+    height: 200vh;
   }
 
   .footer {
