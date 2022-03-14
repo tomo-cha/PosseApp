@@ -83,51 +83,61 @@
         <div class="modal">
             <!-- 閉じるボタン -->
             <div class="close">×</div>
-            <!-- モーダル左側 -->
-            <div class="modal_column1">
-                <div class="wrapper_date">
-                    <p class="date_text">学習日</p>
-                    <div class="date_calender">2020年10月27日</div>
-                </div>
-                <div class="wrapper_contents">
-                    <p class="contents_text">学習コンテンツ（複数選択可）</p>
-                    <ul class="contents">
-                        <li class="content_item">N予備校</li>
-                        <li class="content_item">ドットインストール</li>
-                        <li class="content_item">POSSE課題</li>
-                    </ul>
-                </div>
-                <div class="wrapper_langs">
-                    <p class="langs_text">学習言語（複数選択可）</p>
-                    <ul class="langs_list">
-                        <li class="lang_item">HTML</li>
-                        <li class="lang_item">CSS</li>
-                        <li class="lang_item">JavaScript</li>
-                        <li class="lang_item">PHP</li>
-                        <li class="lang_item">Laravel</li>
-                        <li class="lang_item">SQL</li>
-                        <li class="lang_item">SHELL</li>
-                        <li class="lang_item">情報システム基礎知識（その他）</li>
-                    </ul>
-                </div>
-            </div>
-            <!-- モーダル右側 -->
-            <div class="modal_column2">
-                <div class="wrapper_time">
-                    <p class="time_text">学習時間</p>
-                    <input class="time_textarea"></input>
-                </div>
-                <div class="wrapper_twitter">
-                    <p class="twitter_text">Twitter用コメント</p>
-                    <textarea class="twitter_textarea" minlength="1" maxlength="140"></textarea>
 
+            <!-- 記録画面 -->
+            <div class="record">
+                <!-- 記録左側 -->
+                <div class="modal_column1">
+                    <div class="wrapper_date">
+                        <p class="date_text">学習日</p>
+                        <div class="date_calender">2020年10月27日</div>
+                    </div>
+                    <div class="wrapper_contents">
+                        <p class="contents_text">学習コンテンツ（複数選択可）</p>
+                        <ul class="contents">
+                            <li class="content_item">N予備校</li>
+                            <li class="content_item">ドットインストール</li>
+                            <li class="content_item">POSSE課題</li>
+                        </ul>
+                    </div>
+                    <div class="wrapper_langs">
+                        <p class="langs_text">学習言語（複数選択可）</p>
+                        <ul class="langs_list">
+                            <li class="lang_item">HTML</li>
+                            <li class="lang_item">CSS</li>
+                            <li class="lang_item">JavaScript</li>
+                            <li class="lang_item">PHP</li>
+                            <li class="lang_item">Laravel</li>
+                            <li class="lang_item">SQL</li>
+                            <li class="lang_item">SHELL</li>
+                            <li class="lang_item">情報システム基礎知識（その他）</li>
+                        </ul>
+                    </div>
                 </div>
-                <p class="twitter_check">Twitterにシェアする</p>
+                <!-- 記録右側 -->
+                <div class="modal_column2">
+                    <div class="wrapper_time">
+                        <p class="time_text">学習時間</p>
+                        <input class="time_textarea"></input>
+                    </div>
+                    <div class="wrapper_twitter">
+                        <p class="twitter_text">Twitter用コメント</p>
+                        <textarea class="twitter_textarea" minlength="1" maxlength="140"></textarea>
+
+                    </div>
+                    <p class="twitter_check">Twitterにシェアする</p>
+                </div>
+                <button class="header_button">記録・投稿</button>
             </div>
-            <button class="header_button">記録・投稿</button>
+            <!-- ローディング画面 -->
+            <div class="load">
+                <img src="/img/D1FB273F-7C3B-4F47-A255-F97C61E49253.jpeg" alt="">
+            </div>
+            <!-- ローディング画面 -->
+            <div class="complete">
+                <img src="/img/2AE8BD05-5028-4852-9478-F5CC79CCEF29.jpeg" alt="">
+            </div>
         </div>
-        <!-- スクロールで高さを出すためのsectionタグ -->
-        <section></section>
 </div>
 
 <!-- スクロールで高さを出すためのsectionタグ -->
@@ -140,6 +150,9 @@
         <span class="footer_left">＜</span>
         <span class="footer_date">2020年　10月</span>
         <span class="footer_right">＞</span>
+        <div class="footer_wrapper">
+            <button class="header_button">記録・投稿</button>
+        </div>
     </footer>
     <!-- footer -->
 
