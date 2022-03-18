@@ -300,6 +300,9 @@ html {
   opacity: 1;
   visibility: visible;
 }
+.overlay.disable {
+  pointer-events: none;
+}
 
 .modal {
   width: 900px;
@@ -328,6 +331,9 @@ html {
   right: 20px;
   cursor: pointer;
   font-size: 20px;
+}
+.modal .close.disable {
+  pointer-events: none;
 }
 .modal .record {
   display: flex;
