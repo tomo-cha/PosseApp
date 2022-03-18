@@ -305,9 +305,9 @@ html {
 }
 
 .modal {
-  width: 900px;
+  width: 90%;
   height: 500px;
-  padding: 56px 56px 56px 56px;
+  padding: 46px 56px 56px 56px;
   background-color: #ffffff;
   /* 位置の調整(真ん中に表示) */
   position: fixed;
@@ -320,6 +320,15 @@ html {
   /* 表示の変化にかかる時間 */
   transition: 0.3s;
   border-radius: 20px;
+}
+@media screen and (max-width: 768px) {
+  .modal {
+    width: 100%;
+    height: 100%;
+    padding: 10px 20px 20px 20px;
+    margin-top: 46px;
+    overflow: auto;
+  }
 }
 .modal.active {
   opacity: 1;
@@ -336,6 +345,14 @@ html {
   pointer-events: none;
 }
 .modal .record {
+  width: 100%;
+  height: 100%;
+  display: none;
+}
+.modal .record.active {
+  display: block;
+}
+.modal .record .info {
   display: flex;
   flex-wrap: wrap;
   -moz-column-gap: 40px;
@@ -343,61 +360,66 @@ html {
   -moz-column-count: 2;
        column-count: 2;
   flex-direction: row;
-  display: none;
 }
-.modal .record.active {
-  display: block;
+.modal .record .info .modal_column1 {
+  width: calc((100% - 40px) / 2);
+  margin-top: 10px;
 }
-.modal .record .modal_column1 {
-  width: 374px;
+@media screen and (max-width: 768px) {
+  .modal .record .info .modal_column1 {
+    width: 100%;
+  }
 }
-.modal .record .modal_column1 .wrapper_date .date_text {
+.modal .record .info .modal_column1 .wrapper_date .date_text {
   font-size: 13px;
   font-weight: bold;
 }
-.modal .record .modal_column1 .wrapper_date .date_calender {
-  width: 374px;
+.modal .record .info .modal_column1 .wrapper_date .date_calender {
+  width: 100%;
   height: 56px;
   border-radius: 10px;
   background-color: #f5f5f8;
   display: flex;
-  margin: 5px 0px 15px 0px;
+  margin-top: 10px;
   padding-left: 20px;
   align-items: center;
 }
-.modal .record .modal_column1 .wrapper_contents .contents_text {
+.modal .record .info .modal_column1 .wrapper_contents {
+  margin-top: 15px;
+}
+.modal .record .info .modal_column1 .wrapper_contents .contents_text {
   font-size: 13px;
   font-weight: bold;
 }
-.modal .record .modal_column1 .wrapper_contents .contents {
+.modal .record .info .modal_column1 .wrapper_contents .contents {
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
-  margin: 5px 0px 15px 0px;
+  margin-top: 5px;
 }
-.modal .record .modal_column1 .wrapper_contents .contents .content_item {
+.modal .record .info .modal_column1 .wrapper_contents .contents .content_item {
   font-size: 13px;
   background-color: #f5f5f8;
   border-radius: 13px;
   padding: 5px 8px;
   margin-right: 10px;
-  margin-bottom: 5px;
+  margin-top: 5px;
   position: relative;
 }
-.modal .record .modal_column1 .wrapper_contents .contents .content_item.active {
+.modal .record .info .modal_column1 .wrapper_contents .contents .content_item.active {
   background-color: #e7f5ff;
 }
-.modal .record .modal_column1 .wrapper_contents .contents .content_item::before {
+.modal .record .info .modal_column1 .wrapper_contents .contents .content_item::before {
   content: "・";
   font-size: 16px;
   background-color: #cccccc;
   color: #cccccc;
   border-radius: 16px;
 }
-.modal .record .modal_column1 .wrapper_contents .contents .content_item::before.active {
+.modal .record .info .modal_column1 .wrapper_contents .contents .content_item::before.active {
   background-color: #0f71bd;
 }
-.modal .record .modal_column1 .wrapper_contents .contents .content_item::after {
+.modal .record .info .modal_column1 .wrapper_contents .contents .content_item::after {
   content: "";
   display: block;
   position: absolute;
@@ -409,39 +431,42 @@ html {
   border-bottom: 2px solid #ffffff;
   transform: rotate(-45deg);
 }
-.modal .record .modal_column1 .wrapper_langs .langs_text {
+.modal .record .info .modal_column1 .wrapper_langs {
+  margin-top: 15px;
+}
+.modal .record .info .modal_column1 .wrapper_langs .langs_text {
   font-size: 13px;
   font-weight: bold;
 }
-.modal .record .modal_column1 .wrapper_langs .langs_list {
+.modal .record .info .modal_column1 .wrapper_langs .langs_list {
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
-  margin: 5px 0px 15px 0px;
+  margin-top: 5px;
 }
-.modal .record .modal_column1 .wrapper_langs .langs_list .lang_item {
+.modal .record .info .modal_column1 .wrapper_langs .langs_list .lang_item {
   font-size: 13px;
   background-color: #f5f5f8;
   border-radius: 13px;
   margin-right: 10px;
   padding: 5px 8px;
-  margin-bottom: 5px;
+  margin-top: 5px;
   position: relative;
 }
-.modal .record .modal_column1 .wrapper_langs .langs_list .lang_item.active {
+.modal .record .info .modal_column1 .wrapper_langs .langs_list .lang_item.active {
   background-color: #e7f5ff;
 }
-.modal .record .modal_column1 .wrapper_langs .langs_list .lang_item::before {
+.modal .record .info .modal_column1 .wrapper_langs .langs_list .lang_item::before {
   content: "・";
   font-size: 16px;
   background-color: #cccccc;
   color: #cccccc;
   border-radius: 16px;
 }
-.modal .record .modal_column1 .wrapper_langs .langs_list .lang_item::before.active {
+.modal .record .info .modal_column1 .wrapper_langs .langs_list .lang_item::before.active {
   background-color: #0f71bd;
 }
-.modal .record .modal_column1 .wrapper_langs .langs_list .lang_item::after {
+.modal .record .info .modal_column1 .wrapper_langs .langs_list .lang_item::after {
   content: "";
   display: block;
   position: absolute;
@@ -453,15 +478,21 @@ html {
   border-bottom: 2px solid #ffffff;
   transform: rotate(-45deg);
 }
-.modal .record .modal_column2 {
-  width: 374px;
+.modal .record .info .modal_column2 {
+  width: calc((100% - 40px) / 2);
+  margin-top: 10px;
 }
-.modal .record .modal_column2 .wrapper_time .time_text {
+@media screen and (max-width: 768px) {
+  .modal .record .info .modal_column2 {
+    width: 100%;
+  }
+}
+.modal .record .info .modal_column2 .wrapper_time .time_text {
   font-size: 13px;
   font-weight: bold;
 }
-.modal .record .modal_column2 .wrapper_time .time_textarea {
-  width: 374px;
+.modal .record .info .modal_column2 .wrapper_time .time_textarea {
+  width: 100%;
   height: 56px;
   border-radius: 10px;
   background-color: #f5f5f8;
@@ -469,12 +500,12 @@ html {
   padding-left: 20px;
   align-items: center;
 }
-.modal .record .modal_column2 .wrapper_twitter .twitter_text {
+.modal .record .info .modal_column2 .wrapper_twitter .twitter_text {
   font-size: 13px;
   font-weight: bold;
 }
-.modal .record .modal_column2 .wrapper_twitter .twitter_textarea {
-  width: 374px;
+.modal .record .info .modal_column2 .wrapper_twitter .twitter_textarea {
+  width: 100%;
   height: 125px;
   resize: none;
   border-radius: 10px;
@@ -482,19 +513,19 @@ html {
   margin: 5px 0px 15px 0px;
   padding: 13px;
 }
-.modal .record .modal_column2 .twitter_check {
+.modal .record .info .modal_column2 .twitter_check {
   font-size: 13px;
   position: relative;
   margin: 5px 0px 15px 0px;
 }
-.modal .record .modal_column2 .twitter_check::before {
+.modal .record .info .modal_column2 .twitter_check::before {
   content: "・";
   font-size: 19px;
   background-color: #0f71bd;
   color: #0f71bd;
   border-radius: 19px;
 }
-.modal .record .modal_column2 .twitter_check::after {
+.modal .record .info .modal_column2 .twitter_check::after {
   content: "";
   display: block;
   position: absolute;
@@ -514,22 +545,27 @@ html {
   background: linear-gradient(to right, #0f72bd, #3ccefe);
   color: #ffffff;
   box-shadow: 0 3px 10px #3ccefe;
-  margin-left: 269px;
+  display: block;
+  left: 0;
+  right: 0;
+  margin: 20px auto;
 }
 .modal .record .header_button:hover {
   opacity: 0.8;
 }
 .modal .load {
-  margin-top: 150px;
-  margin-left: 350px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   display: none;
 }
 .modal .load.active {
   display: block;
 }
 .modal .load img {
-  width: 100px;
-  height: 100px;
+  width: 300px;
+  height: 300px;
   -o-object-fit: cover;
      object-fit: cover;
   -webkit-animation: 1s linear infinite rotation;
@@ -552,8 +588,10 @@ html {
   }
 }
 .modal .complete {
-  margin-top: 100px;
-  margin-left: 250px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   display: none;
 }
 .modal .complete.active {

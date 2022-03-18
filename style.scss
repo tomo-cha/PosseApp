@@ -306,9 +306,9 @@
       }
     }
     .modal{
-        width: 900px;
+        width: 90%;
         height: 500px;
-        padding: 56px 56px 56px 56px;
+        padding: 46px 56px 56px 56px;
         background-color: #ffffff;
         /* 位置の調整(真ん中に表示) */
         position: fixed;
@@ -321,6 +321,13 @@
         /* 表示の変化にかかる時間 */
         transition: .3s;
         border-radius: 20px;
+        @media screen and (max-width: 768px) {
+            width: 100%;
+            height: 100%;
+            padding: 10px 20px 20px 20px;
+            margin-top: 46px;
+            overflow: auto;
+        }
         &.active{
             opacity: 1;
             visibility: visible;
@@ -333,78 +340,196 @@
             cursor: pointer;
             font-size: 20px;
             &.disable{
-              //   disableクラスがついたときに×印をクリックできなくする
+              // disableクラスがついたときに×印をクリックできなくする
               pointer-events: none;
             }
         }
         .record{
-            display: flex;
-            flex-wrap: wrap;
-            column-gap: 40px;
-            column-count: 2;
-            flex-direction: row;
+            width: 100%;
+            height: 100%;
             display: none;
             &.active{
                 display: block;
             }
-            .modal_column1{
-            width: calc((900px - 152px)/2);
-            .wrapper_date{
-                .date_text{
-                    font-size: 13px;
-                    font-weight: bold;
+            .info{
+                display: flex;
+                flex-wrap: wrap;
+                column-gap: 40px;
+                column-count: 2;
+                flex-direction: row;
+                .modal_column1{
+                    width: calc((100% - 40px)/2);
+                    @media screen and (max-width: 768px) {
+                        width: 100%;
+                    }
+                    margin-top: 10px;
+                    .wrapper_date{
+                        .date_text{
+                            font-size: 13px;
+                            font-weight: bold;
+                        }
+                        .date_calender{
+                            width: 100%;
+                            height: 56px;
+                            border-radius: 10px;
+                            background-color: #f5f5f8;
+                            display: flex;
+                            margin-top: 10px;
+                            padding-left: 20px;
+                            align-items: center;
+                        }
+                    }
+                    .wrapper_contents{
+                        margin-top: 15px;
+                        .contents_text{
+                            font-size: 13px;
+                            font-weight: bold;
+                        }
+                        .contents{
+                            display: flex;
+                            flex-wrap: wrap;
+                            flex-direction: row;
+                            margin-top: 5px;
+                            .content_item{
+                                font-size: 13px;
+                                background-color: #f5f5f8;
+                                border-radius: 13px;
+                                padding: 5px 8px;
+                                margin-right: 10px;
+                                margin-top: 5px;
+                                position: relative;
+                                &.active{
+                                    background-color: #e7f5ff;
+                                }
+                            }
+                            // ○の部分
+                            .content_item::before{
+                                content: "・";
+                                font-size: 16px;
+                                background-color: #cccccc;
+                                color: #cccccc;
+                                border-radius: 16px;
+                                &.active{
+                                    background-color: #0f71bd;
+                                }
+                            }
+                            // チェックの部分
+                            .content_item::after{
+                                content: '';
+                                display: block;
+                                position: absolute;
+                                top: 11px;
+                                left: 11px;
+                                width: 10px;
+                                height: 5px;
+                                border-left: 2px solid #ffffff;
+                                border-bottom: 2px solid #ffffff;
+                                transform: rotate(-45deg);
+                            }
+                        }
+                    }
+                    .wrapper_langs{
+                        margin-top: 15px;
+                        .langs_text{
+                            font-size: 13px;
+                            font-weight: bold;
+                        }
+                        .langs_list{
+                            display: flex;
+                            flex-wrap: wrap;
+                            flex-direction: row;
+                            margin-top: 5px;
+                            .lang_item{
+                                font-size: 13px;
+                                background-color: #f5f5f8;
+                                border-radius: 13px;
+                                margin-right: 10px;
+                                padding: 5px 8px;
+                                margin-top: 5px;
+                                position: relative;
+                                &.active{
+                                    background-color: #e7f5ff;
+                                }
+                            }
+                            .lang_item::before{
+                                content: "・";
+                                font-size: 16px;
+                                background-color: #cccccc;
+                                color: #cccccc;
+                                border-radius: 16px;
+                                &.active{
+                                    background-color: #0f71bd;
+                                }
+                            }
+                            .lang_item::after{
+                                content: '';
+                                display: block;
+                                position: absolute;
+                                top: 11px;
+                                left: 11px;
+                                width: 10px;
+                                height: 5px;
+                                border-left: 2px solid #ffffff;
+                                border-bottom: 2px solid #ffffff;
+                                transform: rotate(-45deg);
+                            }
+                        }
+                    }
                 }
-                .date_calender{
-                    width: calc((900px - 152px)/2);
-                    height: 56px;
-                    border-radius: 10px;
-                    background-color: #f5f5f8;
-                    display: flex;
-                    margin: 5px 0px 15px 0px;
-                    padding-left: 20px;
-                    align-items: center;
-                }
-            }
-            .wrapper_contents{
-                .contents_text{
-                    font-size: 13px;
-                    font-weight: bold;
-                }
-                .contents{
-                    display: flex;
-                    flex-wrap: wrap;
-                    flex-direction: row;
-                    margin: 5px 0px 15px 0px;
-                    .content_item{
+                .modal_column2{
+                    width: calc((100% - 40px)/2);
+                    @media screen and (max-width: 768px) {
+                        width: 100%;
+                    }
+                    margin-top: 10px;
+                    .wrapper_time{
+                        .time_text{
+                            font-size: 13px;
+                            font-weight: bold;
+                        }
+                        .time_textarea{
+                            width: 100%;
+                            height: 56px;
+                            border-radius: 10px;
+                            background-color: #f5f5f8;
+                            margin: 5px 0px 15px 0px;
+                            padding-left: 20px;
+                            align-items: center;
+                        }
+                    }
+                    .wrapper_twitter{
+                        .twitter_text{
+                            font-size: 13px;
+                            font-weight: bold;
+                        }
+                        .twitter_textarea{
+                            width: 100%;
+                            height: 125px;
+                            resize: none;
+                            border-radius: 10px;
+                            background-color: #f5f5f8;
+                            margin: 5px 0px 15px 0px;
+                            padding: 13px;
+                        }
+                    }
+                    .twitter_check{
                         font-size: 13px;
-                        background-color: #f5f5f8;
-                        border-radius: 13px;
-                        padding: 5px 8px;
-                        margin-right: 10px;
-                        margin-bottom: 5px;
                         position: relative;
-                        &.active{
-                            background-color: #e7f5ff;
-                        }
+                        margin: 5px 0px 15px 0px;
                     }
-                    // ○の部分
-                    .content_item::before{
+                    .twitter_check::before{
                         content: "・";
-                        font-size: 16px;
-                        background-color: #cccccc;
-                        color: #cccccc;
-                        border-radius: 16px;
-                        &.active{
-                            background-color: #0f71bd;
-                        }
+                        font-size: 19px;
+                        background-color: #0f71bd;
+                        color: #0f71bd;
+                        border-radius: 19px;
                     }
-                    // チェックの部分
-                    .content_item::after{
+                    .twitter_check::after{
                         content: '';
                         display: block;
                         position: absolute;
-                        top: 11px;
-                        left: 11px;
+                        top: 7px;
+                        left: 5px;
                         width: 10px;
                         height: 5px;
                         border-left: 2px solid #ffffff;
@@ -412,152 +537,58 @@
                         transform: rotate(-45deg);
                     }
                 }
-            }
-            .wrapper_langs{
-                .langs_text{
-                    font-size: 13px;
-                    font-weight: bold;
-                }
-                .langs_list{
-                    display: flex;
-                    flex-wrap: wrap;
-                    flex-direction: row;
-                    margin: 5px 0px 15px 0px;
-                    .lang_item{
-                        font-size: 13px;
-                        background-color: #f5f5f8;
-                        border-radius: 13px;
-                        margin-right: 10px;
-                        padding: 5px 8px;
-                        margin-bottom: 5px;
-                        position: relative;
-                        &.active{
-                            background-color: #e7f5ff;
-                        }
-                    }
-                    .lang_item::before{
-                        content: "・";
-                        font-size: 16px;
-                        background-color: #cccccc;
-                        color: #cccccc;
-                        border-radius: 16px;
-                        &.active{
-                            background-color: #0f71bd;
-                        }
-                    }
-                    .lang_item::after{
-                        content: '';
-                        display: block;
-                        position: absolute;
-                        top: 11px;
-                        left: 11px;
-                        width: 10px;
-                        height: 5px;
-                        border-left: 2px solid #ffffff;
-                        border-bottom: 2px solid #ffffff;
-                        transform: rotate(-45deg);
-                    }
-                }
-            }
-            }
-            .modal_column2{
-            width: calc((900px - 152px)/2);
-            .wrapper_time{
-                .time_text{
-                    font-size: 13px;
-                    font-weight: bold;
-                }
-                .time_textarea{
-                    width: calc((900px - 152px)/2);
-                    height: 56px;
-                    border-radius: 10px;
-                    background-color: #f5f5f8;
-                    margin: 5px 0px 15px 0px;
-                    padding-left: 20px;
-                    align-items: center;
-                }
-            }
-            .wrapper_twitter{
-                .twitter_text{
-                    font-size: 13px;
-                    font-weight: bold;
-                }
-                .twitter_textarea{
-                    width: calc((900px - 152px)/2);
-                    height: 125px;
-                    resize: none;
-                    border-radius: 10px;
-                    background-color: #f5f5f8;
-                    margin: 5px 0px 15px 0px;
-                    padding: 13px;
-                }
-
-
-            }
-            .twitter_check{
-                font-size: 13px;
-                position: relative;
-                margin: 5px 0px 15px 0px;
-            }
-            .twitter_check::before{
-                content: "・";
-                font-size: 19px;
-                background-color: #0f71bd;
-                color: #0f71bd;
-                border-radius: 19px;
-            }
-            .twitter_check::after{
-                content: '';
-                display: block;
-                position: absolute;
-                top: 7px;
-                left: 5px;
-                width: 10px;
-                height: 5px;
-                border-left: 2px solid #ffffff;
-                border-bottom: 2px solid #ffffff;
-                transform: rotate(-45deg);
-            }
             }
             .header_button{
-            width: 250px;
-            height: 44px;
-            text-align: center;
-            border-radius: 27px;
-            background: linear-gradient(to right, #0f72bd, #3ccefe);
-            color: #ffffff;
-            box-shadow: 0 3px 10px#3ccefe;
-            margin-left: calc((900px - 250px)/2 - 56px);
-            &:hover{
-                opacity: .8;
-            }
+                width: 250px;
+                height: 44px;
+                text-align: center;
+                border-radius: 27px;
+                background: linear-gradient(to right, #0f72bd, #3ccefe);
+                color: #ffffff;
+                box-shadow: 0 3px 10px#3ccefe;
+                display: block;
+                left: 0;
+                right: 0;
+                margin: 20px auto;
+                // @media screen and (max-width: 768px) {
+                //     margin-bottom: 50px;
+                // }
+                &:hover{
+                    opacity: .8;
+                }
             }
         }
         .load{
-            margin-top: 150px;
-            margin-left: 350px;
+            // ローディング画面
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
             display: none;
             &.active{
                 display: block;
             }
             img{
-                width: 100px;
-                height: 100px;
+                width: 300px;
+                height: 300px;
                 object-fit: cover;
                 animation:1s linear infinite rotation;
                 @keyframes rotation{
-                    0%{ 
+                    0%{
                         transform:rotate(0);
                     }
-                    100%{ 
+                    100%{
                         transform:rotate(360deg); 
                     }
                 }
             }
         }
         .complete{
-            margin-top: 100px;
-            margin-left: 250px;
+            // 完了画面
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
             display: none;
             &.active{
                 display: block;
@@ -590,7 +621,6 @@
         .footer_right{
             color: #9dbdd3;
         }
-
         .footer_wrapper{
             display: flex;
             justify-content: center;
@@ -613,6 +643,5 @@
             }
         }
     }
-
 
 // }
