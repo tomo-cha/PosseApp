@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>posse課題-自主課題</title>
-    <link rel="stylesheet" href="/top.css">
+    <link rel="stylesheet" href="/style.css">
     <link rel="stylesheet" href="/reset.css">
 </head>
 <body>
@@ -13,7 +13,7 @@
     <header class="header">
         <img class="header_img" src="/img/posse_logoのコピー.jpg" alt="posseロゴ">
         <span class="header_text">4th week</span>
-        <button class="header_button">記録・投稿</button>
+        <button id="headerButton" class="header_button">記録・投稿</button>
     </header>
     <!-- header -->
 
@@ -50,7 +50,7 @@
             <!-- 右側 -->
             <div class="column2">
                 <!-- 右左側 -->
-                <ul class="circle_graph1">
+                <ul class="circle_graph circle_graph1">
                     <li class="item_title">学習言語</li>
                     <img class="item_graph" src="/img/スクリーンショット 2022-03-10 11.29.04.png" alt="">
                     <ul class="lang">
@@ -65,7 +65,7 @@
                     </ul>
                 </ul>
                 <!-- 右右側 -->
-                <ul class="circle_graph2">
+                <ul class="circle_graph circle_graph2">
                     <li class="item_title">学習コンテンツ</li>
                     <img class="item_graph" src="/img/スクリーンショット 2022-03-10 12.21.45.png" alt="">
                     <ul class="contents">
@@ -77,15 +77,15 @@
             </div>
         </div>
         <!-- オーバーレイ -->
-        <div class="overlay"></div>
+        <div id="overlay" class="overlay"></div>
 
         <!-- モーダルウィンドウ -->
-        <div class="modal">
+        <div id="modal" class="modal">
             <!-- 閉じるボタン -->
-            <div class="close">×</div>
+            <div id="close" class="close">×</div>
 
             <!-- 記録画面 -->
-            <div class="record">
+            <div id="record" class="record">
                 <!-- 記録左側 -->
                 <div class="modal_column1">
                     <div class="wrapper_date">
@@ -127,34 +127,32 @@
                     </div>
                     <p class="twitter_check">Twitterにシェアする</p>
                 </div>
-                <button class="header_button">記録・投稿</button>
+                <button id="modalButton" class="header_button">記録・投稿</button>
             </div>
             <!-- ローディング画面 -->
-            <div class="load">
+            <div id="load" class="load">
                 <img src="/img/D1FB273F-7C3B-4F47-A255-F97C61E49253.jpeg" alt="">
             </div>
             <!-- ローディング画面 -->
-            <div class="complete">
+            <div id="complete" class="complete">
                 <img src="/img/2AE8BD05-5028-4852-9478-F5CC79CCEF29.jpeg" alt="">
             </div>
         </div>
-</div>
-
-<!-- スクロールで高さを出すためのsectionタグ -->
-<section></section>
     </main>
 
     <!-- main -->
+
     <!-- footer -->
     <footer class="footer">
         <span class="footer_left">＜</span>
         <span class="footer_date">2020年　10月</span>
         <span class="footer_right">＞</span>
         <div class="footer_wrapper">
-            <button class="header_button">記録・投稿</button>
+            <button id="footerButton" class="header_button">記録・投稿</button>
         </div>
     </footer>
     <!-- footer -->
 
+    <script src="./script.js"></script>
 </body>
 </html>
