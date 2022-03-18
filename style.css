@@ -339,7 +339,11 @@ html {
   top: 10px;
   right: 20px;
   cursor: pointer;
-  font-size: 20px;
+  width: 20px;
+  text-align: center;
+  padding-bottom: 2px;
+  border-radius: 20px;
+  background-color: #f1f1f8;
 }
 .modal .close.disable {
   pointer-events: none;

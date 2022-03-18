@@ -1,5 +1,8 @@
 // @media screen and (min-width: 768px) {
-    // PCサイズのCSSを土台にして、スマホ用のレスポンシブを一個ずつ書いてる
+    // PCサイズのCSSを土台にして、スマホ用のレスポンシブを一個ずつ書いています。
+    // ブレイクポイントは768px
+    // sm版は横幅375pxまでカバーできています。
+
     html{
         background-color: #f1f1f8;
     }
@@ -338,7 +341,11 @@
             top: 10px;
             right: 20px;
             cursor: pointer;
-            font-size: 20px;
+            width: 20px;
+            text-align: center;
+            padding-bottom: 2px;
+            border-radius: 20px;
+            background-color: #f1f1f8;
             &.disable{
               // disableクラスがついたときに×印をクリックできなくする
               pointer-events: none;
