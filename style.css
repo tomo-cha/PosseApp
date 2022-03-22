@@ -13,6 +13,7 @@ html {
   height: 64px;
   padding: 5px 40px 5px 20px;
   background-color: #ffffff;
+  z-index: 1;
 }
 .header .header_img {
   height: 54px;
@@ -337,6 +338,7 @@ html {
   visibility: visible;
 }
 .modal .close {
+  display: none;
   position: absolute;
   top: 10px;
   right: 20px;
@@ -347,8 +349,26 @@ html {
   border-radius: 20px;
   background-color: #f1f1f8;
 }
+.modal .close.active {
+  display: block;
+}
 .modal .close.disable {
   pointer-events: none;
+}
+.modal .back {
+  display: none;
+  position: absolute;
+  top: 10px;
+  left: 20px;
+  cursor: pointer;
+  width: 20px;
+  text-align: center;
+  padding-bottom: 2px;
+  border-radius: 20px;
+  background-color: #f1f1f8;
+}
+.modal .back.active {
+  display: block;
 }
 .modal .record {
   width: 100%;
@@ -559,6 +579,19 @@ html {
 .modal .record .header_button:hover {
   opacity: 0.8;
 }
+.modal .calender_wrapper {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  padding: 20px;
+  display: none;
+  background-color: coral;
+}
+.modal .calender_wrapper.active {
+  display: block;
+}
 .modal .load {
   position: fixed;
   top: 50%;
@@ -574,8 +607,8 @@ html {
   height: 300px;
   -o-object-fit: cover;
      object-fit: cover;
-  -webkit-animation: 3s linear infinite rotation;
-          animation: 3s linear infinite rotation;
+  -webkit-animation: 1s linear infinite rotation;
+          animation: 1s linear infinite rotation;
 }
 @-webkit-keyframes rotation {
   0% {

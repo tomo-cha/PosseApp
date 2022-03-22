@@ -7,8 +7,12 @@
     <title>posse課題-自主課題</title>
     <link rel="stylesheet" href="./style.css">
     <link rel="stylesheet" href="./reset.css">
-    
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.min.js"></script> -->
+    <!-- カレンダーのためにjQueryを読み込み -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <!-- jquery-uiの読み込み -->
+    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1/jquery-ui.min.js"></script>
+    <!-- jquery-ui-datepickerの読み込み -->
+    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1/i18n/jquery.ui.datepicker-ja.min.js"></script>
 </head>
 <body>
     <!-- header -->
@@ -89,7 +93,9 @@
         <div id="modal" class="modal">
             <!-- 閉じるボタン -->
             <div id="closeButton" class="close">×</div>
-
+            <!-- 戻るボタン -->
+            <!-- カレンダー画面でのみ表示 -->
+            <div id="backButton" class="back">←</div>
             <!-- 記録画面 -->
             <div id="record" class="record">
                 <div class="info">
@@ -97,7 +103,7 @@
                     <div class="modal_column1">
                         <div class="wrapper_date">
                             <p class="date_text">学習日</p>
-                            <div class="date_calender">2020年10月27日</div>
+                            <div id="calenderButton" class="date_calender">2022年3月20日</div>
                         </div>
                         <div class="wrapper_contents">
                             <p class="contents_text">学習コンテンツ（複数選択可）</p>
@@ -137,11 +143,73 @@
                 </div>
                 <button id="modalButton" class="header_button">記録・投稿</button>
             </div>
+            <!-- カレンダー画面 -->
+            <div id="calenderWrapper" class="calender_wrapper">
+                <button class="cal_left" onclick="prev()">＜</button>
+                <span class="cal_date">2022年　3月</span>
+                <button class="cal_right" onclick="next()">＞</button>
+                <table id="calender" class="calender">
+                    <tr>
+                        <th class="day">Sun</th>
+                        <th class="day">Mon</th>
+                        <th class="day">Tue</th>
+                        <th class="day">Wed</th>
+                        <th class="day">Thu</th>
+                        <th class="day">Fri</th>
+                        <th class="day">Sat</th>
+                    </tr>
+                    <tr>
+                        <td class="date"></td>
+                        <td class="date"></td>
+                        <td class="date">1</td>
+                        <td class="date">2</td>
+                        <td class="date">3</td>
+                        <td class="date">4</td>
+                        <td class="date">5</td>
+                    </tr>
+                    <tr>
+                        <td class="date">6</td>
+                        <td class="date">7</td>
+                        <td class="date">8</td>
+                        <td class="date">9</td>
+                        <td class="date">10</td>
+                        <td class="date">11</td>
+                        <td class="date">12</td>
+                    </tr>
+                    <tr>
+                        <td class="date">13</td>
+                        <td class="date">14</td>
+                        <td class="date">15</td>
+                        <td class="date">16</td>
+                        <td class="date">17</td>
+                        <td class="date">18</td>
+                        <td class="date">19</td>
+                    </tr>
+                    <tr>
+                        <td class="date">20</td>
+                        <td class="date">21</td>
+                        <td class="date">22</td>
+                        <td class="date">23</td>
+                        <td class="date">24</td>
+                        <td class="date">25</td>
+                        <td class="date">26</td>
+                    </tr>
+                    <tr>
+                        <td class="date">27</td>
+                        <td class="date">28</td>
+                        <td class="date">29</td>
+                        <td class="date">30</td>
+                        <td class="date">31</td>
+                        <td class="date"></td>
+                        <td class="date"></td>
+                    </tr>
+                </table>
+            </div>
             <!-- ローディング画面 -->
             <div id="load" class="load">
                 <img src="./img/D1FB273F-7C3B-4F47-A255-F97C61E49253.jpeg" alt="">
             </div>
-            <!-- ローディング画面 -->
+            <!-- 投稿完了画面 -->
             <div id="complete" class="complete">
                 <img src="./img/2AE8BD05-5028-4852-9478-F5CC79CCEF29.jpeg" alt="">
             </div>
@@ -152,7 +220,7 @@
     <!-- footer -->
     <footer class="footer">
         <span class="footer_left">＜</span>
-        <span class="footer_date">2020年　10月</span>
+        <span class="footer_date">2022年　3月</span>
         <span class="footer_right">＞</span>
         <div class="footer_wrapper">
             <button id="footerButton" class="header_button">記録・投稿</button>

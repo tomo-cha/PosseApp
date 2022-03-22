@@ -1,4 +1,4 @@
-// @media screen and (min-width: 768px) {
+
     // PCサイズのCSSを土台にして、スマホ用のレスポンシブを一個ずつ書いています。
     // ブレイクポイントは768px
     // sm版は横幅375pxまでカバーできています。
@@ -17,12 +17,11 @@
         height: 64px;
         padding: 5px 40px 5px 20px;
         background-color: #ffffff;
+        z-index: 1;
         // posseロゴ
         .header_img{
-            // width: 200px;
             height: 54px;
             object-fit: cover;
-            // background-size: contain;
         }
         // 4th week
         .header_text{
@@ -340,6 +339,7 @@
         }
         .close{
             // ×印
+            display: none;
             position: absolute;
             top: 10px;
             right: 20px;
@@ -349,9 +349,28 @@
             padding-bottom: 2px;
             border-radius: 20px;
             background-color: #f1f1f8;
+            &.active{
+                display: block;
+            }
             &.disable{
               // disableクラスがついたときに×印をクリックできなくする
               pointer-events: none;
+            }
+        }
+        .back{
+            // ←印
+            display: none;
+            position: absolute;
+            top: 10px;
+            left: 20px;
+            cursor: pointer;
+            width: 20px;
+            text-align: center;
+            padding-bottom: 2px;
+            border-radius: 20px;
+            background-color: #f1f1f8;
+            &.active{
+                display: block;
             }
         }
         // 記録・投稿画面
@@ -561,11 +580,41 @@
                 left: 0;
                 right: 0;
                 margin: 20px auto;
-                // @media screen and (max-width: 768px) {
-                //     margin-bottom: 50px;
-                // }
                 &:hover{
                     opacity: .8;
+                }
+            }
+        }
+        .calender_wrapper{
+            // カレンダー画面
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            padding: 20px;
+            display: none;
+            background-color: coral;
+            &.active{
+                display: block;
+            }
+            .cal_left{
+
+            }
+            .cal_date{
+
+            }
+            .cal_right{
+
+            }
+            .calender{
+                tr{
+                    .day{
+    
+                    }
+                    .date{
+    
+                    }
                 }
             }
         }
@@ -583,7 +632,7 @@
                 width: 300px;
                 height: 300px;
                 object-fit: cover;
-                animation:3s linear infinite rotation;
+                animation:1s linear infinite rotation;
                 @keyframes rotation{
                     0%{
                         transform:rotate(0);
@@ -655,4 +704,4 @@
         }
     }
 
-// }
+

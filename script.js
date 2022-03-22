@@ -4,29 +4,47 @@
 const headerButton = document.getElementById("headerButton");
 const overlay = document.getElementById("overlay")
 const modal = document.getElementById("modal")
-const closeButton = document.getElementById("closeButton")
+    const closeButton = document.getElementById("closeButton")
+    const backButton = document.getElementById("backButton")
     const record = document.getElementById("record")
-    const modalButton = document.getElementById("modalButton")
+        const modalButton = document.getElementById("modalButton")
+        const calenderButton = document.getElementById("calenderButton")
+    const calenderWrapper = document.getElementById("calenderWrapper")
     const load = document.getElementById("load")
     const complete = document.getElementById("complete")
 const footerButton = document.getElementById("footerButton")
 
 
-// pcでヘッダーの記録・投稿をクリックしたらoverlay、モーダル、recordが表示される
+// pcでヘッダーの記録・投稿をクリックしたらoverlay、modal、record、closeButtonが表示される。
 // smでフッターの記録・投稿をクリックしたらoverlay、モーダル、recordが表示される
 headerButton.addEventListener("click",function(){
     overlay.classList.add("active")
     modal.classList.add("active")
     record.classList.add("active")
-});
+    closeButton.classList.add("active")
+})
 footerButton.addEventListener("click",function(){
     overlay.classList.add("active")
     modal.classList.add("active")
     record.classList.add("active")
+    closeButton.classList.add("active")
 })
-// モーダルで学習日をクリックしたらカレンダーが表示される
+// モーダルで学習日をクリックしたらカレンダー、backButtonが表示される
+calenderButton.addEventListener("click",function(){
+    record.classList.remove("active")
+    closeButton.classList.remove("active")
+    calenderWrapper.classList.add("active")
+    backButton.classList.add("active")
+})
+// カレンダーで戻るボタンをクリックしたらrecordが表示される
+backButton.addEventListener("click", function(){
+    calenderWrapper.classList.remove("active")
+    backButton.classList.remove("active")
+    record.classList.add("active")
+    closeButton.classList.add("active")
+})
 
-// モーダルで記録・投稿をクリックしたらローディングが１秒表示され、その後完了画面が表示される
+// モーダルで記録・投稿をクリックしたらローディングが３秒表示され、その後完了画面が表示される
 modalButton.addEventListener("click", function(){
     record.classList.remove("active")
     load.classList.add("active")
@@ -37,24 +55,32 @@ modalButton.addEventListener("click", function(){
         complete.classList.add("active")
         overlay.classList.remove("disable")
         closeButton.classList.remove("disable")
-    },1000)
+    },3000)
 })
 // モーダルで記録・投稿をクリックしたときエラーなら、エラー画面が表示される
 
-// ×印もしくはoverlayがクリックされるとoverlayとモーダルが隠される
+// どの画面の状態でも、×印もしくはoverlayがクリックされるとoverlayとモーダルが隠される
 closeButton.addEventListener("click", function(){
     overlay.classList.remove("active")
     modal.classList.remove("active")
+    closeButton.classList.remove("active")
+    record.classList.remove("active")
+    calenderWrapper.classList.remove("active")
+    backButton.classList.remove("active")
     complete.classList.remove("active")
 })
 overlay.addEventListener("click", function(){
     overlay.classList.remove("active")
     modal.classList.remove("active")
+    closeButton.classList.remove("active")
+    record.classList.remove("active")
+    calenderWrapper.classList.remove("active")
+    backButton.classList.remove("active")
     complete.classList.remove("active")
 })
 
 
-// 後述のticks。偶数のみ配列に追加する。
+// グラフ関連の変数。後述のticks。偶数のみ配列に追加する。
 const ticks = [];
 for (let i=2; i<31; i=i+2){
     ticks.push(i)
@@ -130,11 +156,6 @@ const circle_contents_editor = [
       //棒グラフオプション
       const bar_options = {
           title: '',
-          // animation:{
-          //     startup: true,
-          //     duration: 800,
-          //     easing: 'inAndOut'
-          // },
           colors:["#0f72bd"],
           legend: {position: "none"},
           vAxis: {
@@ -153,7 +174,8 @@ const circle_contents_editor = [
               },
               ticks: ticks,
               textStyle:{fontSize: 8,}
-          }
+          },
+          chartArea:{width:"85%",height:"80%"}
       }
       //棒グラフのDOMと紐付け
       const bar_chart = new google.visualization.ColumnChart(document.getElementById('barGraph'));
@@ -173,6 +195,7 @@ const circle_contents_editor = [
         pieSliceTextStyle: {
             fontSize: 8,
         },
+        'chartArea': {'width': '100%', 'height': '100%'}
       }
       //円（言語）グラフのDOMと紐付け
       const circle_lang_chart = new google.visualization.PieChart(document.getElementById('langGraph'));
@@ -190,6 +213,7 @@ const circle_contents_editor = [
         legend: {position: "none"},
         colors: ["#1754ef", "#0f71bd", "#20bdde"],
         pieHole: 0.4,
+        'chartArea': {'width': '100%', 'height': '100%'}
       }
       //円（コンテンツ）グラフのDOMと紐付け
       const circle_contents_chart = new google.visualization.PieChart(document.getElementById('contentGraph'));
@@ -205,6 +229,19 @@ const circle_contents_editor = [
     }  
 
 // カレンダー
+const today = new Date();
+const week = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat",]
+console.log(today)
+console.log(today.getDay()) //日曜日を0とした曜日
+console.log(today.getDate()) //日
+console.log(today.getMonth()) //月。-1の数が出る
+console.log(today.getUTCFullYear()) //年
 
+var showDate = new Date(today.getFullYear(), today.getMonth(), 1);
+console.log(showDate) //today.getMonth()なのに３が取得できる！？
+
+var tableChildren = `<tr>`
+console.log(document.getElementById("calender"))
+const calender = document.getElementById("calender")
 
 // ツイッター
