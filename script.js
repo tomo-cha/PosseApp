@@ -10,7 +10,7 @@ const modal = document.getElementById("modal")
         const modalButton = document.getElementById("modalButton")
         const calendarBox = document.getElementById("calendarBox")
     const calendarWrapper = document.getElementById("calendarWrapper")
-    const calendarButton = document.getElementById("calendarButton")
+        const calendarButton = document.getElementById("calendarButton")
     const load = document.getElementById("load")
     const complete = document.getElementById("complete")
 const footerDate = document.getElementById("footerDate")
@@ -45,6 +45,7 @@ backButton.addEventListener("click", function(){
     record.classList.add("active")
     closeButton.classList.add("active")
 })
+
 
 // モーダルで記録・投稿をクリックしたらローディングが３秒表示され、その後完了画面が表示される
 modalButton.addEventListener("click", function(){
@@ -233,10 +234,14 @@ const circle_contents_editor = [
 // カレンダー
 const today = new Date();
 const week = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat",]
+console.log(`${today.getFullYear()}年${today.getMonth()+1}月${today.getDate()}日`)
+var calendarBoxHTML = `${today.getFullYear()}年${today.getMonth()+1}月${today.getDate()}日`
+calendarBox.innerHTML = calendarBoxHTML;
+
 
 // 今日の月の１日というDateオブジェクトを取ってくる
 var showDate = new Date(today.getFullYear(), today.getMonth(), 1);
-console.log(showDate.getMonth()) //today.getMonth()なのに３が取得できる！？
+// console.log(showDate.getMonth()) //today.getMonth()なのに３が取得できる！？
 
 // 前の月表示
 function prev(){
@@ -322,23 +327,21 @@ function check(year, month, date){
         everyDate[i].classList.remove("selected")
     }
     selectDate.classList.add("selected")
+    calendarBoxHTML = `${year}年${month+1}月${date}日`
 }
-
+calendarButton.addEventListener("click",function(){
+    // recordに戻る
+    calendarWrapper.classList.remove("active")
+    backButton.classList.remove("active")
+    record.classList.add("active")
+    closeButton.classList.add("active")
+    // calendarBoxの表示をクリックした日付にする
+    calendarBox.innerHTML = calendarBoxHTML;
+})
 // 読み込まれた時点でcalendarを表示するためのjsを読み込む
-window.onload = showProcess(today,calendar)
+calendarBox.addEventListener("click",showProcess(today))
 
-// calendarButton.addEventListener("click", function(){
-//     // recordに戻る
-//     calendarWrapper.classList.remove("active")
-//     backButton.classList.remove("active")
-//     record.classList.add("active")
-//     closeButton.classList.add("active")
-//     // calendarBoxの表示をクリックした日付にする
-//     calendarBox.innerHTML = `${year}年${month+1}月${date}日`
-// });
 
-// デフォルト値
-footerDate.innerHTML = `${today.getFullYear()}年 ${today.getMonth()+1}月`
-calendarBox.innerHTML = `${today.getFullYear()}年${today.getMonth()+1}月${today.getDate()}日`
+
 
 // ツイッター
