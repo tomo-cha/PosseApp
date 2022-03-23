@@ -345,3 +345,10 @@ calendarBox.addEventListener("click",showProcess(today))
 
 
 // ツイッター
+// クリックしたらチェックの背景を青色にする。二回クリックしたら白に戻す。
+
+// チェックの背景を変更する関数
+function addCheck(id) {
+    const checkItem = document.getElementById(id)
+    checkItem.classList.toggle("active")
+}

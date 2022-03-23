@@ -434,18 +434,12 @@ html {
   margin-top: 5px;
   position: relative;
 }
-.modal .record .info .modal_column1 .wrapper_contents .contents .content_item.active {
-  background-color: #e7f5ff;
-}
 .modal .record .info .modal_column1 .wrapper_contents .contents .content_item::before {
   content: "・";
   font-size: 16px;
   background-color: #cccccc;
   color: #cccccc;
   border-radius: 16px;
-}
-.modal .record .info .modal_column1 .wrapper_contents .contents .content_item::before.active {
-  background-color: #0f71bd;
 }
 .modal .record .info .modal_column1 .wrapper_contents .contents .content_item::after {
   content: "";
@@ -458,6 +452,10 @@ html {
   border-left: 2px solid #ffffff;
   border-bottom: 2px solid #ffffff;
   transform: rotate(-45deg);
+}
+.modal .record .info .modal_column1 .wrapper_contents .contents .content_item.active::before {
+  background-color: #0f71bd;
+  color: #0f71bd;
 }
 .modal .record .info .modal_column1 .wrapper_langs {
   margin-top: 15px;
@@ -481,18 +479,12 @@ html {
   margin-top: 5px;
   position: relative;
 }
-.modal .record .info .modal_column1 .wrapper_langs .langs_list .lang_item.active {
-  background-color: #e7f5ff;
-}
 .modal .record .info .modal_column1 .wrapper_langs .langs_list .lang_item::before {
   content: "・";
   font-size: 16px;
   background-color: #cccccc;
   color: #cccccc;
   border-radius: 16px;
-}
-.modal .record .info .modal_column1 .wrapper_langs .langs_list .lang_item::before.active {
-  background-color: #0f71bd;
 }
 .modal .record .info .modal_column1 .wrapper_langs .langs_list .lang_item::after {
   content: "";
@@ -505,6 +497,10 @@ html {
   border-left: 2px solid #ffffff;
   border-bottom: 2px solid #ffffff;
   transform: rotate(-45deg);
+}
+.modal .record .info .modal_column1 .wrapper_langs .langs_list .lang_item.active::before {
+  background-color: #0f71bd;
+  color: #0f71bd;
 }
 .modal .record .info .modal_column2 {
   width: calc((100% - 40px) / 2);
@@ -549,9 +545,12 @@ html {
 .modal .record .info .modal_column2 .twitter_check::before {
   content: "・";
   font-size: 19px;
-  background-color: #0f71bd;
-  color: #0f71bd;
+  background-color: #cccccc;
+  color: #cccccc;
   border-radius: 19px;
+}
+.modal .record .info .modal_column2 .twitter_check::before .active::before {
+  background-color: #0f71bd;
 }
 .modal .record .info .modal_column2 .twitter_check::after {
   content: "";
@@ -564,6 +563,10 @@ html {
   border-left: 2px solid #ffffff;
   border-bottom: 2px solid #ffffff;
   transform: rotate(-45deg);
+}
+.modal .record .info .modal_column2 .twitter_check.active::before {
+  background-color: #0f71bd;
+  color: #0f71bd;
 }
 .modal .record .header_button {
   width: 250px;

@@ -430,34 +430,33 @@
                                 margin-right: 10px;
                                 margin-top: 5px;
                                 position: relative;
-                                &.active{
-                                    background-color: #e7f5ff;
+                                // ○の部分
+                                &::before{
+                                    content: "・";
+                                    font-size: 16px;
+                                    background-color: #cccccc;
+                                    color: #cccccc;
+                                    border-radius: 16px;
                                 }
-                            }
-                            // ○の部分
-                            .content_item::before{
-                                content: "・";
-                                font-size: 16px;
-                                background-color: #cccccc;
-                                color: #cccccc;
-                                border-radius: 16px;
-                                &.active{
+                                // チェックの部分
+                                &::after{
+                                    content: '';
+                                    display: block;
+                                    position: absolute;
+                                    top: 11px;
+                                    left: 11px;
+                                    width: 10px;
+                                    height: 5px;
+                                    border-left: 2px solid #ffffff;
+                                    border-bottom: 2px solid #ffffff;
+                                    transform: rotate(-45deg);
+                                }
+                                &.active::before{
                                     background-color: #0f71bd;
+                                    color: #0f71bd;
                                 }
                             }
-                            // チェックの部分
-                            .content_item::after{
-                                content: '';
-                                display: block;
-                                position: absolute;
-                                top: 11px;
-                                left: 11px;
-                                width: 10px;
-                                height: 5px;
-                                border-left: 2px solid #ffffff;
-                                border-bottom: 2px solid #ffffff;
-                                transform: rotate(-45deg);
-                            }
+
                         }
                     }
                     .wrapper_langs{
@@ -479,32 +478,31 @@
                                 padding: 5px 8px;
                                 margin-top: 5px;
                                 position: relative;
-                                &.active{
-                                    background-color: #e7f5ff;
+                                &::before{
+                                    content: "・";
+                                    font-size: 16px;
+                                    background-color: #cccccc;
+                                    color: #cccccc;
+                                    border-radius: 16px;
                                 }
-                            }
-                            .lang_item::before{
-                                content: "・";
-                                font-size: 16px;
-                                background-color: #cccccc;
-                                color: #cccccc;
-                                border-radius: 16px;
-                                &.active{
+                                &::after{
+                                    content: '';
+                                    display: block;
+                                    position: absolute;
+                                    top: 11px;
+                                    left: 11px;
+                                    width: 10px;
+                                    height: 5px;
+                                    border-left: 2px solid #ffffff;
+                                    border-bottom: 2px solid #ffffff;
+                                    transform: rotate(-45deg);
+                                }
+                                &.active::before{
                                     background-color: #0f71bd;
+                                    color: #0f71bd;
                                 }
                             }
-                            .lang_item::after{
-                                content: '';
-                                display: block;
-                                position: absolute;
-                                top: 11px;
-                                left: 11px;
-                                width: 10px;
-                                height: 5px;
-                                border-left: 2px solid #ffffff;
-                                border-bottom: 2px solid #ffffff;
-                                transform: rotate(-45deg);
-                            }
+ 
                         }
                     }
                 }
@@ -548,26 +546,34 @@
                         font-size: 13px;
                         position: relative;
                         margin: 5px 0px 15px 0px;
+                        &::before{
+                            content: "・";
+                            font-size: 19px;
+                            background-color: #cccccc;
+                            color: #cccccc;
+                            border-radius: 19px;
+                            .active::before{
+                                background-color: #0f71bd;
+                            }
+                        }
+                        &::after{
+                            content: '';
+                            display: block;
+                            position: absolute;
+                            top: 7px;
+                            left: 5px;
+                            width: 10px;
+                            height: 5px;
+                            border-left: 2px solid #ffffff;
+                            border-bottom: 2px solid #ffffff;
+                            transform: rotate(-45deg);
+                        }
+                        &.active::before{
+                            background-color: #0f71bd;
+                            color: #0f71bd;
+                        }
                     }
-                    .twitter_check::before{
-                        content: "・";
-                        font-size: 19px;
-                        background-color: #0f71bd;
-                        color: #0f71bd;
-                        border-radius: 19px;
-                    }
-                    .twitter_check::after{
-                        content: '';
-                        display: block;
-                        position: absolute;
-                        top: 7px;
-                        left: 5px;
-                        width: 10px;
-                        height: 5px;
-                        border-left: 2px solid #ffffff;
-                        border-bottom: 2px solid #ffffff;
-                        transform: rotate(-45deg);
-                    }
+
                 }
             }
             .header_button{
