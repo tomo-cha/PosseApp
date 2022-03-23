@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>posse課題-自主課題</title>
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./reset.css">
+</head>
+<body>
+    <!-- header -->
+    <header class="header">
+        <img class="header_img" src="./img/posse_logoのコピー.jpg" alt="posseロゴ">
+        <span class="header_text">4th week</span>
+        <button id="headerButton" class="header_button">記録・投稿</button>
+    </header>
+    <!-- header -->
+
+    <!-- main -->
+    <main class="main">
+        <!-- 全体 -->
+        <div class="container">
+            <!-- 左側 -->
+            <div class="column1">
+                <!-- 左上側 -->
+                <div class="wrapper1">
+                    <ul class="item_contents">
+                        <li class="item_label">Today</li>
+                        <li class="item_number">3</li>
+                        <li class="item_hour">hour</li>
+                    </ul>
+                    <ul class="item_contents">
+                        <li class="item_label">Month</li>
+                        <li class="item_number">120</li>
+                        <li class="item_hour">hour</li>
+                    </ul>
+                    <ul class="item_contents">
+                        <li class="item_label">Total</li>
+                        <li class="item_number">1348</li>
+                        <li class="item_hour">hour</li>
+                    </ul>
+                </div>
+                <!-- 左下側 -->
+                <div class="wrapper2">
+                    <div id="barGraph" class="bar_graph" style="width:100%">
+                    </div>
+                </div>
+            </div>
+            <!-- 右側 -->
+            <div class="column2">
+                <!-- 右左側 -->
+                <ul class="circle_graph circle_graph1">
+                    <li class="item_title">学習言語</li>
+                    <div id="langGraph" class="item_graph" style="width:100%">
+                    </div>
+                    <!-- <img class="item_graph" src="./img/スクリーンショット 2022-03-10 11.29.04.png" alt=""> -->
+                    <ul class="lang">
+                        <li class="lang_item lang_html">HTML</li>
+                        <li class="lang_item lang_js">JavaScript</li>
+                        <li class="lang_item lang_css">CSS</li>
+                        <li class="lang_item lang_php">PHP</li>
+                        <li class="lang_item lang_lara">Laravel</li>
+                        <li class="lang_item lang_sql">SQL</li>
+                        <li class="lang_item lang_shell">SHELL</li>
+                        <li class="lang_item lang_others">情報システム基礎知識（その他）</li>
+                    </ul>
+                </ul>
+                <!-- 右右側 -->
+                <ul class="circle_graph circle_graph2">
+                    <li class="item_title">学習コンテンツ</li>
+                    <div id="contentGraph" class="item_graph" style="width:100%">
+                    </div>
+                    <!-- <img class="item_graph" src="./img/スクリーンショット 2022-03-10 12.21.45.png" alt=""> -->
+                    <ul class="contents">
+                        <li class="content content_dot">ドットインストール</li>
+                        <li class="content content_nyobi">N予備校</li>
+                        <li class="content content_posse">POSSE課題</li>
+                    </ul>
+                </ul>
+            </div>
+        </div>
+        <!-- オーバーレイ -->
+        <div id="overlay" class="overlay"></div>
+
+        <!-- モーダルウィンドウ -->
+        <div id="modal" class="modal">
+            <!-- 閉じるボタン -->
+            <div id="closeButton" class="close">×</div>
+            <!-- 戻るボタン -->
+            <!-- カレンダー画面でのみ表示 -->
+            <div id="backButton" class="back">←</div>
+            <!-- 記録画面 -->
+            <div id="record" class="record">
+                <div class="info">
+                    <!-- 記録左側 -->
+                    <div class="modal_column1">
+                        <div class="wrapper_date">
+                            <p class="date_text">学習日</p>
+                            <p id="calendarBox" class="date_calendar"></p>
+                        </div>
+                        <div class="wrapper_contents">
+                            <p class="contents_text">学習コンテンツ（複数選択可）</p>
+                            <ul class="contents">
+                                <li id="check_item_0" class="content_item" onclick='addCheck("check_item_0")'>N予備校</li>
+                                <li id="check_item_1" class="content_item" onclick='addCheck("check_item_1")'>ドットインストール</li>
+                                <li id="check_item_2" class="content_item" onclick='addCheck("check_item_2")'>POSSE課題</li>
+                            </ul>
+                        </div>
+                        <div class="wrapper_langs">
+                            <p class="langs_text">学習言語（複数選択可）</p>
+                            <ul class="langs_list">
+                                <li id="check_item_3" class="lang_item" onclick='addCheck("check_item_3")'>HTML</li>
+                                <li id="check_item_4" class="lang_item" onclick='addCheck("check_item_4")'>CSS</li>
+                                <li id="check_item_5" class="lang_item" onclick='addCheck("check_item_5")'>JavaScript</li>
+                                <li id="check_item_6" class="lang_item" onclick='addCheck("check_item_6")'>PHP</li>
+                                <li id="check_item_7" class="lang_item" onclick='addCheck("check_item_7")'>Laravel</li>
+                                <li id="check_item_8" class="lang_item" onclick='addCheck("check_item_8")'>SQL</li>
+                                <li id="check_item_9" class="lang_item" onclick='addCheck("check_item_9")'>SHELL</li>
+                                <li id="check_item_10" class="lang_item" onclick='addCheck("check_item_10")'>情報システム基礎知識（その他）</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- 記録右側 -->
+                    <div class="modal_column2">
+                        <div class="wrapper_time">
+                            <p class="time_text">学習時間</p>
+                            <input class="time_textarea"></input>
+                        </div>
+                        <div class="wrapper_twitter">
+                            <p class="twitter_text">Twitter用コメント</p>
+                            <textarea class="twitter_textarea" minlength="1" maxlength="140"></textarea>
+                        
+                        </div>
+                        <p id="check_item_11" class="twitter_check" onclick='addCheck("check_item_11")'>Twitterにシェアする</p>
+                    </div>
+                </div>
+                <button id="modalButton" class="header_button">記録・投稿</button>
+            </div>
+            <!-- カレンダー画面 -->
+            <div id="calendarWrapper" class="calendar_wrapper">
+                <button class="cal_left" onclick="prev()">＜</button>
+                <span id="calDate" class="cal_date"></span>
+                <button class="cal_right" onclick="next()">＞</button>
+                <div id="calendar" class="calendar"></div>
+                <button id="calendarButton" class="header_button">決定</button>
+            </div>
+            <!-- ローディング画面 -->
+            <div id="load" class="load">
+                <img src="./img/D1FB273F-7C3B-4F47-A255-F97C61E49253.jpeg" alt="">
+            </div>
+            <!-- 投稿完了画面 -->
+            <div id="complete" class="complete">
+                <img src="./img/2AE8BD05-5028-4852-9478-F5CC79CCEF29.jpeg" alt="">
+            </div>
+        </div>
+    </main>
+    <!-- main -->
+
+    <!-- footer -->
+    <footer class="footer">
+        <span class="footer_left">＜</span>
+        <span id="footerDate" class="footer_date">2022年　3月</span>
+        <span class="footer_right">＞</span>
+        <div class="footer_wrapper">
+            <button id="footerButton" class="header_button">記録・投稿</button>
+        </div>
+    </footer>
+    <!-- footer -->
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script src="./script.js"></script>
+</body>
+</html>
