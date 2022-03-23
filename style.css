@@ -588,11 +588,52 @@ html {
   transform: translate(-50%, -50%);
   text-align: center;
   padding: 20px;
+  padding: 20px;
   display: none;
-  background-color: coral;
 }
 .modal .calendar_wrapper.active {
   display: block;
+}
+.modal .calendar_wrapper .cal_left {
+  color: #287fc2;
+}
+.modal .calendar_wrapper .cal_date {
+  margin: 0px 12px;
+  font-weight: bold;
+}
+.modal .calendar_wrapper .cal_right {
+  color: #9dbdd3;
+}
+.modal .calendar_wrapper .calendar {
+  margin-top: 20px;
+}
+.modal .calendar_wrapper .calendar table {
+  border-spacing: 20px 10px;
+}
+.modal .calendar_wrapper .calendar table tbody tr .week {
+  font-size: 10px;
+  width: 30px;
+  height: 20px;
+  padding: 5px;
+  text-align: center;
+}
+.modal .calendar_wrapper .calendar table tbody tr .today {
+  font-size: 12px;
+  width: 30px;
+  height: 20px;
+  padding: 5px;
+}
+.modal .calendar_wrapper .calendar table tbody tr .today.selected {
+  background-color: #0f70be;
+}
+.modal .calendar_wrapper .calendar table tbody tr .other_date {
+  font-size: 12px;
+  width: 30px;
+  height: 20px;
+  padding: 5px;
+}
+.modal .calendar_wrapper .calendar table tbody tr .other_date.selected {
+  background-color: #0f70be;
 }
 .modal .calendar_wrapper .header_button {
   width: 100px;
@@ -601,7 +642,7 @@ html {
   border-radius: 27px;
   background: linear-gradient(to right, #0f72bd, #3ccefe);
   color: #ffffff;
-  margin-top: 40px;
+  margin-top: 20px;
   margin-left: auto;
   box-shadow: 0 3px 10px #3ccefe;
 }

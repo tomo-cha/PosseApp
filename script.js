@@ -10,6 +10,7 @@ const modal = document.getElementById("modal")
         const modalButton = document.getElementById("modalButton")
         const calendarBox = document.getElementById("calendarBox")
     const calendarWrapper = document.getElementById("calendarWrapper")
+    const calendarButton = document.getElementById("calendarButton")
     const load = document.getElementById("load")
     const complete = document.getElementById("complete")
 const footerDate = document.getElementById("footerDate")
@@ -260,11 +261,11 @@ function showProcess(date) {
 
 function createProcess(year, month){
     //曜日
-    var calendar = `<table><tr class="dayOfWeek">`;
+    var calendar = `<table><tr>`;
     for(let i=0; i<week.length; i++){
-        calendar += `<th>${week[i]}</th>`;
+        calendar += `<th class="week">${week[i]}</th>`;
     }
-    calendar += `</th>`;
+    calendar += `</tr>`;
 
     var count = 0;
     //○月1日の曜日
@@ -299,10 +300,10 @@ function createProcess(year, month){
                 if(year == today.getFullYear()
                   && month == (today.getMonth())
                   && count == today.getDate()){
-                    calendar += `<td id="${year}_${month+1}_${count}" class='today' onclick="check(${year},${month},${count})">${count}</td>`;
+                    calendar += `<td id="${year}_${month+1}_${count}" class='date today' onclick="check(${year},${month},${count})">${count}</td>`;
                 }else{
                     // それ以外の日付にはなんのクラスもつけない
-                    calendar += `<td id="${year}_${month+1}_${count}" class='date' onclick="check(${year},${month},${count})">${count}</td>`;
+                    calendar += `<td id="${year}_${month+1}_${count}" class='date other_date' onclick="check(${year},${month},${count})">${count}</td>`;
                 }
             }
         }
@@ -315,19 +316,26 @@ function createProcess(year, month){
 }
 // 日付をクリックすると、recordに戻り、calendarBoxにその日付が入る
 function check(year, month, date){
-    const selectDay = document.getElementById(`${year}_${month+1}_${date}`);
-    selectDay.addEventListener("click", function(){
-        // recordに戻る
-        calendarWrapper.classList.remove("active")
-        backButton.classList.remove("active")
-        record.classList.add("active")
-        closeButton.classList.add("active")
-        // calendarBoxの表示をクリックした日付にする
-        calendarBox.innerHTML = `${year}年${month+1}月${date}日`
-    })
+    const selectDate = document.getElementById(`${year}_${month+1}_${date}`);
+    const everyDate = document.getElementsByClassName("date");
+    for(let i=0; i<everyDate.length; i++){
+        everyDate[i].classList.remove("selected")
+    }
+    selectDate.classList.add("selected")
 }
+
 // 読み込まれた時点でcalendarを表示するためのjsを読み込む
 window.onload = showProcess(today,calendar)
+
+// calendarButton.addEventListener("click", function(){
+//     // recordに戻る
+//     calendarWrapper.classList.remove("active")
+//     backButton.classList.remove("active")
+//     record.classList.add("active")
+//     closeButton.classList.add("active")
+//     // calendarBoxの表示をクリックした日付にする
+//     calendarBox.innerHTML = `${year}年${month+1}月${date}日`
+// });
 
 // デフォルト値
 footerDate.innerHTML = `${today.getFullYear()}年 ${today.getMonth()+1}月`

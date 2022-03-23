@@ -595,29 +595,55 @@
             transform: translate(-50%, -50%);
             text-align: center;
             padding: 20px;
+            padding: 20px;
             display: none;
-            background-color: coral;
+            // background-color: coral;
             &.active{
                 display: block;
             }
             .cal_left{
-
+                color: #287fc2;
             }
             .cal_date{
-
+                margin: 0px 12px;
+                font-weight: bold;
             }
             .cal_right{
-
+                color: #9dbdd3;
             }
             .calendar{
+                margin-top: 20px;
                 table{
-                    tr{
-                        .
-                        .today{
-        
+                    // width: 420px;
+                    // height: 200px;
+                    border-spacing: 20px 10px;
+                    // border-collapse: separate;
+                    tbody tr{
+                        .week{
+                            font-size: 10px;
+                            width: 30px;
+                            height: 20px;
+                            padding: 5px;
+                            text-align: center;
                         }
-                        .date{
-        
+                        .today{
+                            font-size: 12px;
+                            width: 30px;
+                            height: 20px;
+                            padding: 5px;
+                            // border-radius: 30px;
+                            &.selected{
+                                background-color: #0f70be;
+                            }
+                        }
+                        .other_date{
+                            font-size: 12px;
+                            width: 30px;
+                            height: 20px;
+                            padding: 5px;
+                            &.selected{
+                                background-color: #0f70be;
+                            }
                         }
                     }
                 }
@@ -629,7 +655,7 @@
                 border-radius: 27px;
                 background: linear-gradient(to right, #0f72bd, #3ccefe);
                 color: #ffffff;
-                margin-top: 40px;
+                margin-top: 20px;
                 margin-left: auto;
                 box-shadow: 0 3px 10px#3ccefe;
                 &:hover{
