@@ -363,7 +363,7 @@
             // ←印
             display: none;
             position: absolute;
-            top: 10px;
+            top: 12px;
             left: 20px;
             cursor: pointer;
             width: 20px;
@@ -594,8 +594,12 @@
             left: 50%;
             transform: translate(-50%, -50%);
             text-align: center;
-            padding: 20px;
-            padding: 20px;
+            padding: 40px 20px 20px 20px;
+            width: 70%;
+            @media screen and (max-width:768px) {
+                width: 100%;
+                height: 100%;
+            }
             display: none;
             // background-color: coral;
             &.active{
@@ -613,25 +617,22 @@
             }
             .calendar{
                 margin-top: 20px;
+                width: 100%;
                 table{
-                    // width: 420px;
-                    // height: 200px;
-                    border-spacing: 20px 10px;
-                    // border-collapse: separate;
+                    width: 100%;
                     tbody tr{
                         .week{
                             font-size: 10px;
                             width: 30px;
                             height: 20px;
-                            padding: 5px;
+                            padding: 10px;
                             text-align: center;
                         }
                         .today{
                             font-size: 12px;
                             width: 30px;
                             height: 20px;
-                            padding: 5px;
-                            // border-radius: 30px;
+                            padding: 10px;
                             &.selected{
                                 background-color: #0f70be;
                             }
@@ -640,7 +641,7 @@
                             font-size: 12px;
                             width: 30px;
                             height: 20px;
-                            padding: 5px;
+                            padding: 10px;
                             &.selected{
                                 background-color: #0f70be;
                             }

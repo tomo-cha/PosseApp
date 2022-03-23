@@ -178,7 +178,7 @@ const circle_contents_editor = [
               ticks: ticks,
               textStyle:{fontSize: 8,}
           },
-          chartArea:{width:"85%",height:"80%"}
+          chartArea:{width:"85%",height:"70%"}
       }
       //棒グラフのDOMと紐付け
       const bar_chart = new google.visualization.ColumnChart(document.getElementById('barGraph'));
@@ -198,7 +198,7 @@ const circle_contents_editor = [
         pieSliceTextStyle: {
             fontSize: 8,
         },
-        'chartArea': {'width': '100%', 'height': '100%'}
+        'chartArea': {'width': '95%', 'height': '95%'}
       }
       //円（言語）グラフのDOMと紐付け
       const circle_lang_chart = new google.visualization.PieChart(document.getElementById('langGraph'));
@@ -216,7 +216,7 @@ const circle_contents_editor = [
         legend: {position: "none"},
         colors: ["#1754ef", "#0f71bd", "#20bdde"],
         pieHole: 0.4,
-        'chartArea': {'width': '100%', 'height': '100%'}
+        'chartArea': {'width': '95%', 'height': '95%'}
       }
       //円（コンテンツ）グラフのDOMと紐付け
       const circle_contents_chart = new google.visualization.PieChart(document.getElementById('contentGraph'));
@@ -305,7 +305,7 @@ function createProcess(year, month){
                 if(year == today.getFullYear()
                   && month == (today.getMonth())
                   && count == today.getDate()){
-                    calendar += `<td id="${year}_${month+1}_${count}" class='date today' onclick="check(${year},${month},${count})">${count}</td>`;
+                    calendar += `<td id="${year}_${month+1}_${count}" class='date today selected' onclick="check(${year},${month},${count})">${count}</td>`;
                 }else{
                     // それ以外の日付にはなんのクラスもつけない
                     calendar += `<td id="${year}_${month+1}_${count}" class='date other_date' onclick="check(${year},${month},${count})">${count}</td>`;
