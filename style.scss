@@ -299,6 +299,7 @@
       visibility: hidden;
       /* 表示する際の変化の所要時間 */
       transition: .3s;
+      z-index: 1;
       &.active{
         /* activeクラスがついたときにオーバーレイを表示する */
         opacity: 1;
@@ -326,6 +327,7 @@
         /* 表示の変化にかかる時間 */
         transition: .3s;
         border-radius: 20px;
+        z-index: 2;
         @media screen and (max-width: 768px) {
             width: 100%;
             height: 100%;
@@ -398,7 +400,7 @@
                             font-size: 13px;
                             font-weight: bold;
                         }
-                        .date_calender{
+                        .date_calendar{
                             width: 100%;
                             height: 56px;
                             border-radius: 10px;
@@ -585,7 +587,7 @@
                 }
             }
         }
-        .calender_wrapper{
+        .calendar_wrapper{
             // カレンダー画面
             position: fixed;
             top: 50%;
@@ -607,14 +609,31 @@
             .cal_right{
 
             }
-            .calender{
-                tr{
-                    .day{
-    
+            .calendar{
+                table{
+                    tr{
+                        .
+                        .today{
+        
+                        }
+                        .date{
+        
+                        }
                     }
-                    .date{
-    
-                    }
+                }
+            }
+            .header_button{
+                width: 100px;
+                height: 40px;
+                text-align: center;
+                border-radius: 27px;
+                background: linear-gradient(to right, #0f72bd, #3ccefe);
+                color: #ffffff;
+                margin-top: 40px;
+                margin-left: auto;
+                box-shadow: 0 3px 10px#3ccefe;
+                &:hover{
+                    opacity: .8;
                 }
             }
         }

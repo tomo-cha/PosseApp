@@ -8,10 +8,11 @@ const modal = document.getElementById("modal")
     const backButton = document.getElementById("backButton")
     const record = document.getElementById("record")
         const modalButton = document.getElementById("modalButton")
-        const calenderButton = document.getElementById("calenderButton")
-    const calenderWrapper = document.getElementById("calenderWrapper")
+        const calendarBox = document.getElementById("calendarBox")
+    const calendarWrapper = document.getElementById("calendarWrapper")
     const load = document.getElementById("load")
     const complete = document.getElementById("complete")
+const footerDate = document.getElementById("footerDate")
 const footerButton = document.getElementById("footerButton")
 
 
@@ -30,15 +31,15 @@ footerButton.addEventListener("click",function(){
     closeButton.classList.add("active")
 })
 // モーダルで学習日をクリックしたらカレンダー、backButtonが表示される
-calenderButton.addEventListener("click",function(){
+calendarBox.addEventListener("click",function(){
     record.classList.remove("active")
     closeButton.classList.remove("active")
-    calenderWrapper.classList.add("active")
+    calendarWrapper.classList.add("active")
     backButton.classList.add("active")
 })
 // カレンダーで戻るボタンをクリックしたらrecordが表示される
 backButton.addEventListener("click", function(){
-    calenderWrapper.classList.remove("active")
+    calendarWrapper.classList.remove("active")
     backButton.classList.remove("active")
     record.classList.add("active")
     closeButton.classList.add("active")
@@ -65,7 +66,7 @@ closeButton.addEventListener("click", function(){
     modal.classList.remove("active")
     closeButton.classList.remove("active")
     record.classList.remove("active")
-    calenderWrapper.classList.remove("active")
+    calendarWrapper.classList.remove("active")
     backButton.classList.remove("active")
     complete.classList.remove("active")
 })
@@ -74,7 +75,7 @@ overlay.addEventListener("click", function(){
     modal.classList.remove("active")
     closeButton.classList.remove("active")
     record.classList.remove("active")
-    calenderWrapper.classList.remove("active")
+    calendarWrapper.classList.remove("active")
     backButton.classList.remove("active")
     complete.classList.remove("active")
 })
@@ -231,17 +232,105 @@ const circle_contents_editor = [
 // カレンダー
 const today = new Date();
 const week = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat",]
-console.log(today)
-console.log(today.getDay()) //日曜日を0とした曜日
-console.log(today.getDate()) //日
-console.log(today.getMonth()) //月。-1の数が出る
-console.log(today.getUTCFullYear()) //年
 
+// 今日の月の１日というDateオブジェクトを取ってくる
 var showDate = new Date(today.getFullYear(), today.getMonth(), 1);
-console.log(showDate) //today.getMonth()なのに３が取得できる！？
+console.log(showDate.getMonth()) //today.getMonth()なのに３が取得できる！？
 
-var tableChildren = `<tr>`
-console.log(document.getElementById("calender"))
-const calender = document.getElementById("calender")
+// 前の月表示
+function prev(){
+    showDate.setMonth(showDate.getMonth() - 1);
+    showProcess(showDate);
+}
+// 次の月表示
+function next(){
+    showDate.setMonth(showDate.getMonth() + 1);
+    showProcess(showDate);
+}
+
+// カレンダー表示
+function showProcess(date) {
+    var year = date.getFullYear();
+    var month = date.getMonth();
+    document.getElementById('calDate').innerHTML = `${year}年${month+1}月`;
+
+    var calendar = createProcess(year, month);
+    document.getElementById('calendar').innerHTML = calendar;
+}
+
+function createProcess(year, month){
+    //曜日
+    var calendar = `<table><tr class="dayOfWeek">`;
+    for(let i=0; i<week.length; i++){
+        calendar += `<th>${week[i]}</th>`;
+    }
+    calendar += `</th>`;
+
+    var count = 0;
+    //○月1日の曜日
+    var startDayOfWeek = new Date(year, month, 1).getDay();
+    // 月末の日付（=次の月の0日目）
+    var endDate = new Date(year, month + 1, 0).getDate();
+    // 先月末の日付（=今月の0日目）
+    // var lastMonthEndDate = new Date(year, month, 0).getDate();
+    // その月の列の数
+    // Math.ceil = その数を超える最小の整数
+    var row = Math.ceil((startDayOfWeek + endDate) / week.length);
+
+    // 縦列
+    for(let i=0; i<row; i++){
+        // まずtrを追加
+        calendar += `<tr>`;
+        // 横列
+        for(let j=0; j<week.length; j++){
+            // 1日の前日までは空のtdをつける
+            if (i == 0 && j < startDayOfWeek) {
+                calendar += `<td></td>`;
+            }
+            else if (count >= endDate) {
+                // 末日以降、空のtdをつける
+                count++;
+                calendar += `<td></td>`;
+            // 他の日付はcountで順番につけていく
+            }
+            else{
+                count++;
+                // 今日の日付にはtodayクラスをつける
+                if(year == today.getFullYear()
+                  && month == (today.getMonth())
+                  && count == today.getDate()){
+                    calendar += `<td id="${year}_${month+1}_${count}" class='today' onclick="check(${year},${month},${count})">${count}</td>`;
+                }else{
+                    // それ以外の日付にはなんのクラスもつけない
+                    calendar += `<td id="${year}_${month+1}_${count}" class='date' onclick="check(${year},${month},${count})">${count}</td>`;
+                }
+            }
+        }
+        // 最後にtrで閉じる
+        calendar += `</tr>`
+    }
+    // createProcess()のところに変数calenderが入る
+    // returnの後ろの値があることでcreateProcess()に値が入る
+    return calendar;
+}
+// 日付をクリックすると、recordに戻り、calendarBoxにその日付が入る
+function check(year, month, date){
+    const selectDay = document.getElementById(`${year}_${month+1}_${date}`);
+    selectDay.addEventListener("click", function(){
+        // recordに戻る
+        calendarWrapper.classList.remove("active")
+        backButton.classList.remove("active")
+        record.classList.add("active")
+        closeButton.classList.add("active")
+        // calendarBoxの表示をクリックした日付にする
+        calendarBox.innerHTML = `${year}年${month+1}月${date}日`
+    })
+}
+// 読み込まれた時点でcalendarを表示するためのjsを読み込む
+window.onload = showProcess(today,calendar)
+
+// デフォルト値
+footerDate.innerHTML = `${today.getFullYear()}年 ${today.getMonth()+1}月`
+calendarBox.innerHTML = `${today.getFullYear()}年${today.getMonth()+1}月${today.getDate()}日`
 
 // ツイッター
