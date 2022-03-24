@@ -102,22 +102,22 @@
                         <div class="wrapper_contents">
                             <p class="contents_text">学習コンテンツ（複数選択可）</p>
                             <ul class="contents">
-                                <li id="check_item_0" class="content_item" onclick='addCheck("check_item_0")'>N予備校</li>
-                                <li id="check_item_1" class="content_item" onclick='addCheck("check_item_1")'>ドットインストール</li>
-                                <li id="check_item_2" class="content_item" onclick='addCheck("check_item_2")'>POSSE課題</li>
+                                <li name="check_item" class="content_item" onclick='addCheck(0)'>N予備校</li>
+                                <li name="check_item" class="content_item" onclick='addCheck(1)'>ドットインストール</li>
+                                <li name="check_item" class="content_item" onclick='addCheck(2)'>POSSE課題</li>
                             </ul>
                         </div>
                         <div class="wrapper_langs">
                             <p class="langs_text">学習言語（複数選択可）</p>
                             <ul class="langs_list">
-                                <li id="check_item_3" class="lang_item" onclick='addCheck("check_item_3")'>HTML</li>
-                                <li id="check_item_4" class="lang_item" onclick='addCheck("check_item_4")'>CSS</li>
-                                <li id="check_item_5" class="lang_item" onclick='addCheck("check_item_5")'>JavaScript</li>
-                                <li id="check_item_6" class="lang_item" onclick='addCheck("check_item_6")'>PHP</li>
-                                <li id="check_item_7" class="lang_item" onclick='addCheck("check_item_7")'>Laravel</li>
-                                <li id="check_item_8" class="lang_item" onclick='addCheck("check_item_8")'>SQL</li>
-                                <li id="check_item_9" class="lang_item" onclick='addCheck("check_item_9")'>SHELL</li>
-                                <li id="check_item_10" class="lang_item" onclick='addCheck("check_item_10")'>情報システム基礎知識（その他）</li>
+                                <li name="check_item" class="lang_item" onclick='addCheck(3)'>CSS</li>
+                                <li name="check_item" class="lang_item" onclick='addCheck(4)'>HTML</li>
+                                <li name="check_item" class="lang_item" onclick='addCheck(5)'>JavaScript</li>
+                                <li name="check_item" class="lang_item" onclick='addCheck(6)'>PHP</li>
+                                <li name="check_item" class="lang_item" onclick='addCheck(7)'>Laravel</li>
+                                <li name="check_item" class="lang_item" onclick='addCheck(8)'>SQL</li>
+                                <li name="check_item" class="lang_item" onclick='addCheck(9)'>SHELL</li>
+                                <li name="check_item" class="lang_item" onclick='addCheck(10)'>情報システム基礎知識（その他）</li>
                             </ul>
                         </div>
                     </div>
@@ -132,10 +132,10 @@
                             <textarea class="twitter_textarea" minlength="1" maxlength="140"></textarea>
                         
                         </div>
-                        <p id="check_item_11" class="twitter_check" onclick='addCheck("check_item_11")'>Twitterにシェアする</p>
+                        <p id="twitterShareButton" name="check_item" class="twitter_check" onclick='addCheck("11")'>Twitterにシェアする</p>
                     </div>
                 </div>
-                <button id="modalButton" class="header_button">記録・投稿</button>
+                <button id="modalButton" class="header_button"><a href="" target="_blank">記録・投稿</a></button>
             </div>
             <!-- カレンダー画面 -->
             <div id="calendarWrapper" class="calendar_wrapper">
@@ -154,14 +154,18 @@
                 <img src="./img/2AE8BD05-5028-4852-9478-F5CC79CCEF29.jpeg" alt="">
             </div>
         </div>
+        <!-- エラー画面 -->
+        <div id="error" class="error">
+            <img src="./img/スクリーンショット 2022-03-24 19.53.33.png" alt="">
+        </div>
     </main>
     <!-- main -->
 
     <!-- footer -->
     <footer class="footer">
-        <span class="footer_left">＜</span>
-        <span id="footerDate" class="footer_date">2022年　3月</span>
-        <span class="footer_right">＞</span>
+        <button class="footer_left">＜</button>
+        <span id="footerDate" class="footer_date"></span>
+        <button class="footer_right">＞</button>
         <div class="footer_wrapper">
             <button id="footerButton" class="header_button">記録・投稿</button>
         </div>
