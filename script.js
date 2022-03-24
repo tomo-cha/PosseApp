@@ -1,6 +1,6 @@
 'use strict'
 
-// 要素取得
+// １．要素取得
 const headerButton = document.getElementById("headerButton");
 const overlay = document.getElementById("overlay")
 const modal = document.getElementById("modal")
@@ -16,7 +16,7 @@ const modal = document.getElementById("modal")
 const footerDate = document.getElementById("footerDate")
 const footerButton = document.getElementById("footerButton")
 
-
+// ２．画面遷移
 // pcでヘッダーの記録・投稿をクリックしたらoverlay、modal、record、closeButtonが表示される。
 // smでフッターの記録・投稿をクリックしたらoverlay、モーダル、recordが表示される
 headerButton.addEventListener("click",function(){
@@ -58,7 +58,7 @@ modalButton.addEventListener("click", function(){
         complete.classList.add("active")
         overlay.classList.remove("disable")
         closeButton.classList.remove("disable")
-    },3000)
+    },5000)
 })
 // モーダルで記録・投稿をクリックしたときエラーなら、エラー画面が表示される
 
@@ -82,7 +82,7 @@ overlay.addEventListener("click", function(){
     complete.classList.remove("active")
 })
 
-
+// ３．グラフ
 // グラフ関連の変数。後述のticks。偶数のみ配列に追加する。
 const ticks = [];
 for (let i=2; i<31; i=i+2){
@@ -231,12 +231,18 @@ const circle_contents_editor = [
       }
     }  
 
-// カレンダー
+
+// ４．カレンダー
+// "今日"のデータ
 const today = new Date();
+// 曜日の配列
 const week = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat",]
-console.log(`${today.getFullYear()}年${today.getMonth()+1}月${today.getDate()}日`)
+// recordの学習日に入るテキストを"今日"に設定
 var calendarBoxHTML = `${today.getFullYear()}年${today.getMonth()+1}月${today.getDate()}日`
 calendarBox.innerHTML = calendarBoxHTML;
+// topページのfooterの日付
+var todayMonth = today.getMonth()+1
+footerDate.innerHTML = `${today.getFullYear()}年　${todayMonth}月`
 
 
 // 今日の月の１日というDateオブジェクトを取ってくる
@@ -344,11 +350,10 @@ calendarBox.addEventListener("click",showProcess(today))
 
 
 
-// ツイッター
+// ５．ツイッター
 // クリックしたらチェックの背景を青色にする。二回クリックしたら白に戻す。
-
 // チェックの背景を変更する関数
-function addCheck(id) {
-    const checkItem = document.getElementById(id)
-    checkItem.classList.toggle("active")
+function addCheck(number) {
+    const checkItems = document.getElementsByName("check_item")
+    checkItems[number].classList.toggle("active")
 }
